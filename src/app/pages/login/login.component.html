@@ -1,0 +1,54 @@
+   <!-- breadcrumb start -->
+   <div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/3.png')">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <div class="section-title mb-0 text-center">
+                <h2 class="page-title">Sign In</h2>
+                <ul class="page-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Sign In</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb end -->
+
+
+  <!-- signin-page-Start -->
+  <div class="signin-page-area pd-top-120 pd-bottom-120">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-7">
+                <form class="signin-inner"    [formGroup]="loginForm" (ngSubmit)="login()">
+                  <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4 text"><strong>Sign In</strong></div>
+                    <div class="col-4"></div>
+                  </div>
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="single-input-inner style-bg-border">
+                                <input type="text" placeholder="Login" formControlName="username">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="single-input-inner style-bg-border">
+                                <input type="text" placeholder="Password" formControlName="password">
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <button  type="submit" class="btn btn-base w-100" [disabled]="loginForm.invalid">Sign In</button>
+                        </div>
+                        <div class="col-12">
+                            <a [routerLink]="['/reset']" >Forgottem Your Password</a><br>
+                            <a [routerLink]="['/signup']"><strong>Signup</strong></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- signin-page-end -->
