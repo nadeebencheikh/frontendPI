@@ -10,9 +10,15 @@ import { PotGridComponent } from './pages/pot-grid/pot-grid.component';
 import { PotDetailsComponent } from './pages/pot-details/pot-details.component';
 import { EventDetailComponent } from './pages/event-detail/event-detail.component';
 import { ProductsDetailsComponent } from './pages/products-details/products-details.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { ResetmailComponent } from './pages/reset/resetmail/resetmail.component';
 
 const routes: Routes = [
 
+  { path:'login',  component: LoginComponent },
+  { path:'reset',  component: ResetmailComponent },
+  { path:'signup',  component: SignupComponent },
   { path:'',  component: HomeComponent },
   { path:'home',  component: HomeComponent },
   { path:'about',  component: AboutComponent },
