@@ -12,8 +12,15 @@ import { EventDetailComponent } from './pages/event-detail/event-detail.componen
 import { ProductsDetailsComponent } from './pages/products-details/products-details.component';
 import {AddProductComponent} from "./add-product/add-product.component";
 
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { ResetmailComponent } from './pages/reset/resetmail/resetmail.component';
+
 const routes: Routes = [
 
+  { path:'login',  component: LoginComponent },
+  { path:'reset',  component: ResetmailComponent },
+  { path:'signup',  component: SignupComponent },
   { path:'',  component: HomeComponent },
   { path:'addproduct',  component: AddProductComponent },
   { path:'home',  component: HomeComponent },

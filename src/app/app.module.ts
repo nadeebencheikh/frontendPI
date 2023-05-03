@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -23,6 +22,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
+
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { ResetmailComponent } from './pages/reset/resetmail/resetmail.component';
+import { ResetpassComponent } from './pages/reset/resetpass/resetpass.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +47,10 @@ import { AddProductComponent } from './add-product/add-product.component';
     PotGridComponent,
     EventDetailComponent,
     AddProductComponent,
+    LoginComponent,
+    SignupComponent,
+    ResetmailComponent,
+    ResetpassComponent,
 
   ],
   imports: [
@@ -51,9 +62,15 @@ import { AddProductComponent } from './add-product/add-product.component';
     ModalModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    CommonModule
+    CommonModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
