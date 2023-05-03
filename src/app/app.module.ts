@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { RouterModule } from '@angular/router';
     ClaimComponent,
     PotGridComponent,
     EventDetailComponent,
+    AddProductComponent,
 
   ],
   imports: [

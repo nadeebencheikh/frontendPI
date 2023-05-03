@@ -21,11 +21,34 @@
               <div class="course-course-detaila-inner">
                   <div class="details-inner">
                       <div class="emt-user">
-                          <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
-                          <span class="align-self-center">Nancy Reyes</span>
+
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+                          <div class="carousel-inner" >
+                            <div class="carousel-item active" >
+                              <div class="picsum-img-wrapper">
+                                <img [src]="currentProduct.ProductImages[0].url" alt="img" style="height: 800px;width: 800px"/>
+                              </div>
+                            </div>
+                            <div class="carousel-item" *ngFor="let Image of currentProduct.ProductImages.slice(1)" >
+                              <div class="picsum-img-wrapper">
+                                <img [src]="Image.url" alt="img" style="height: 800px;width: 800px"/>
+                              </div>
+                            </div>
+                          </div>
+                          <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                             data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                             data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </div>
+                          <span class="align-self-center">{{currentProduct.user.name}}</span>
                       </div>
-                      <h3 class="title"><a href="course-details.html">Fox Nymphs Grab Quick-jived Waltz. Brick
-                              Quiz Whangs</a></h3>
+                      <h3 class="title"><a href="#">{{currentProduct.title}}</a></h3>
                   </div>
                   <div class="thumb">
                       <img src="assets/img/course/9.png" alt="img">
@@ -53,18 +76,7 @@
                   <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
                           <div class="course-details-content">
-                              <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog.
-                                  Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz,
-                                  bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz
-                                  whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting
-                                  zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew
-                                  my junk TV quiz. How quickly daft jumping zebras vex. Two driven jocks help fax
-                                  my big quiz. Quick, Baz, get my woven flax jodhpurs! "Now fax quiz Jack!" my
-                                  brave ghost pled. Five quacking zephyrs jolt my wax bed. Flummoxed by job,
-                                  kvetching W. zaps Iraq. Cozy sphinx waves quart jug of bad milk. A very bad
-                                  quack might jinx zippy fowls. Few quips galvanized the mock jury box. Quick
-                                  brown dogs jump over the lazy fox. The jay, pig, fox, zebra, and my wolves
-                                  quack! Blowzy red vixens fight for a quick jump.</p>
+                              <p>{{currentProduct.description}}</p>
                               <div class="row pt-4">
                                   <div class="col-sm-6">
                                       <ul class="single-list-wrap">
@@ -179,91 +191,7 @@
                               </div>
                           </div>
                       </div>
-                      <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
-                          <div class="course-details-content">
-                              <h4 class="title">Overview</h4>
-                              <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog.
-                                  Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz,
-                                  bad nymph, for quick jigs vex! Fox nymphs grab</p>
-                              <div id="accordion-1" class="accordion-area mt-4">
-                                  <div class="card single-faq-inner style-header-bg">
-                                      <div class="card-header" id="ff-five">
-                                          <h5 class="mb-0">
-                                              <button class="btn-link" data-toggle="collapse"
-                                                  data-target="#f-five" aria-expanded="true"
-                                                  aria-controls="f-five">
-                                                  01. What does you simply dummy in do ?
-                                                  <i class="fa fa-eye"></i>
-                                              </button>
-                                          </h5>
-                                      </div>
-                                      <div id="f-five" class="show collapse" aria-labelledby="ff-five"
-                                          data-parent="#accordion">
-                                          <div class="card-body">
-                                              What does you dummy text of free available in market printing has
-                                              industry been industry's standard dummy text ever.
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="card single-faq-inner style-header-bg">
-                                      <div class="card-header" id="ff-six">
-                                          <h5 class="mb-0">
-                                              <button class="btn-link collapsed" data-toggle="collapse"
-                                                  data-target="#f-six" aria-expanded="true" aria-controls="f-six">
-                                                  02. What graphics dummy of free design ?
-                                                  <i class="fa fa-eye"></i>
-                                              </button>
-                                          </h5>
-                                      </div>
-                                      <div id="f-six" class="collapse" aria-labelledby="ff-six"
-                                          data-parent="#accordion">
-                                          <div class="card-body">
-                                              What graphics simply dummy text of free available in market printing
-                                              industry has been industry's standard dummy text ever.
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="card single-faq-inner style-header-bg">
-                                      <div class="card-header" id="ff-seven">
-                                          <h5 class="mb-0">
-                                              <button class="btn-link collapsed" data-toggle="collapse"
-                                                  data-target="#f-seven" aria-expanded="true"
-                                                  aria-controls="f-seven">
-                                                  03. Why we are the best ?
-                                                  <i class="fa fa-eye"></i>
-                                              </button>
-                                          </h5>
-                                      </div>
-                                      <div id="f-seven" class="collapse" aria-labelledby="ff-seven"
-                                          data-parent="#accordion">
-                                          <div class="card-body">
-                                              Why we are dummy text of free available in market printing industry
-                                              has been industry's standard dummy text ever.
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="card single-faq-inner style-header-bg">
-                                      <div class="card-header" id="ff-eight">
-                                          <h5 class="mb-0">
-                                              <button class="btn-link collapsed" data-toggle="collapse"
-                                                  data-target="#f-eight" aria-expanded="true"
-                                                  aria-controls="f-eight">
-                                                  04. What industries dummy covered ?
-                                                  <i class="fa fa-eye"></i>
-                                              </button>
-                                          </h5>
-                                      </div>
-                                      <div id="f-eight" class="collapse" aria-labelledby="ff-eight"
-                                          data-parent="#accordion">
-                                          <div class="card-body">
-                                              What industries text of free available in market printing industry
-                                              has been industry's standard dummy text ever.
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+
                       <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
                           <div class="ratings-list-inner mb-4">
                               <div class="row">
@@ -358,70 +286,64 @@
           <div class="col-lg-4">
               <div class="td-sidebar">
                   <div class="widget widget_feature">
-                      <h4 class="widget-title">Course Features</h4>
+                      <h4 class="widget-title">Product Features</h4>
                       <ul>
-                          <li><i class="fa fa-user"></i><span>Enrolled :</span> 1200 students</li>
-                          <li><i class="fa fa-clock-o"></i><span>Duration :</span> 2 hours</li>
-                          <li><i class="fa fa-clipboard"></i><span>Lectures :</span> 8</li>
-                          <li><i class="fa fa-clone"></i><span>Categories:</span> Technology</li>
-                          <li><i class="fa fa-tags"></i><span>Tags:</span> Android, JavaScript</li>
-                          <li><i class="fa fa-clipboard"></i><span>Instructor:</span> Ethan Dean</li>
+                        <li><i class="fa fa-clipboard"></i><span>Reference:</span> {{currentProduct.reference}}</li>
+                          <li><i class="fa fa-clipboard"></i><span>Quantity :</span> {{ currentProduct.quantity}}</li>
+                          <li *ngIf="currentProduct.subcategory"><i class="fa fa-clone"></i><span>Categories:</span> {{currentProduct.subcategory.name}}</li>
+
                       </ul>
-                      <div class="price-wrap text-center">
-                          <h5>Price:<span>$54.00</span></h5>
-                          <a class="btn btn-base btn-radius" href="#">ENROLL COURSE</a>
+                      <div class="price-wrap text-center" *ngIf="!editOrder">
+                          <h5>Price:<span>ALWAYS FREE!</span></h5>
+                          <a class="btn btn-base btn-radius" (click)="editOrder = true" >GET</a>
                       </div>
+                    <div class="price-wrap text-center" *ngIf="editOrder">
+                      <h5>Price:<span>SET QUANTITE</span></h5>
+                      <input name="quantity" type="number" value="1" placeholder="Quantity" [(ngModel)]="commande.quantity" class="form-control">
+                      <a class="btn btn-black btn-radius mt-5" (click)="AddCommande(currentProduct)" >PASS ORDER!</a>
+                    </div>
                   </div>
-                  <div class="widget widget_catagory">
-                      <h4 class="widget-title">Trending Course</h4>
+                <div *ngIf="FavoriteProducts">
+                <ng-container *ngFor="let Product of FavoriteProducts">
+                  <ng-container *ngIf="currentProduct.user === Product.user; else similarProduct">
+                    <div class="widget widget_catagory">
+                      <h4 class="widget-title">Similar Product</h4>
                       <div class="single-course-inner">
-                          <div class="thumb">
-                              <img src="assets/img/course/1.png" alt="img">
+                        <div class="thumb">
+                          <img [src]="Product.ProductImages[0].url" alt="img" style="height: 350px;width: 340px" (click)="ShowProduct(Product)"/>
+                        </div>
+                        <div class="details">
+                          <div class="details-inner">
+                            <div class="emt-user">
+                              <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
+                              <span class="align-self-center">{{Product.user.name}}</span>
+                            </div>
+                            <h6><a href="course-details.html">{{Product.description}}</a></h6>
                           </div>
-                          <div class="details">
-                              <div class="details-inner">
-                                  <div class="emt-user">
-                                      <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
-                                      <span class="align-self-center">Nancy Reyes</span>
-                                  </div>
-                                  <h6><a href="course-details.html">Fox nymphs grab quick-jived waltz. Brick quiz
-                                          whangs</a></h6>
-                              </div>
-                              <div class="emt-course-meta">
-                                  <div class="row">
-                                      <div class="col-6">
-                                          <div class="rating">
-                                              <i class="fa fa-star"></i> 4.3
-                                              <span>(23)</span>
-                                          </div>
-                                      </div>
-                                      <div class="col-6">
-                                          <div class="price text-right">
-                                              Price: <span>$54.00</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+                        </div>
                       </div>
-                  </div>
+                    </div>
+                  </ng-container>
+                  <ng-template #similarProduct></ng-template>
+                </ng-container>
+                </div>
               </div>
           </div>
       </div>
       <div class="row justify-content-center pd-top-100">
-          <div class="col-lg-4 col-md-6">
-              <div class="single-course-inner">
-                  <div class="thumb">
-                      <img src="assets/img/course/1.png" alt="img">
+          <div  *ngIf="FavoriteProducts" style="display: flex" >
+              <div class="single-course-inner" *ngFor="let Product of FavoriteProducts " >
+                  <div class="thumb" >
+                            <img [src]="Product.ProductImages[0].url" alt="img" style="height: 350px;width: 340px" (click)="ShowProduct(Product)"/>
+
                   </div>
                   <div class="details">
                       <div class="details-inner">
                           <div class="emt-user">
                               <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
-                              <span class="align-self-center">Nancy Reyes</span>
+                              <span class="align-self-center">{{Product.user.name}}</span>
                           </div>
-                          <h6><a href="course-details.html">Fox nymphs grab quick-jived waltz. Brick quiz
-                                  whangs</a></h6>
+                          <h6><a href="course-details.html">{{Product.description}}</a></h6>
                       </div>
                       <div class="emt-course-meta">
                           <div class="row">
@@ -433,69 +355,7 @@
                               </div>
                               <div class="col-6">
                                   <div class="price text-right">
-                                      Price: <span>$54.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-              <div class="single-course-inner">
-                  <div class="thumb">
-                      <img src="assets/img/course/2.png" alt="img">
-                  </div>
-                  <div class="details">
-                      <div class="details-inner">
-                          <div class="emt-user">
-                              <span class="u-thumb"><img src="assets/img/author/2.png" alt="img"></span>
-                              <span class="align-self-center">Joe Powell</span>
-                          </div>
-                          <h6><a href="course-details.html">Aenean sed nibh a magna posuere tempo faucib</a></h6>
-                      </div>
-                      <div class="emt-course-meta">
-                          <div class="row">
-                              <div class="col-6">
-                                  <div class="rating">
-                                      <i class="fa fa-star"></i> 4.3
-                                      <span>(23)</span>
-                                  </div>
-                              </div>
-                              <div class="col-6">
-                                  <div class="price text-right">
-                                      Price: <span>$54.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-              <div class="single-course-inner">
-                  <div class="thumb">
-                      <img src="assets/img/course/3.png" alt="img">
-                  </div>
-                  <div class="details">
-                      <div class="details-inner">
-                          <div class="emt-user">
-                              <span class="u-thumb"><img src="assets/img/author/3.png" alt="img"></span>
-                              <span class="align-self-center">Timothy Willis</span>
-                          </div>
-                          <h6><a href="course-details.html">Praesent eu dolor eu orci vehicula euismod</a></h6>
-                      </div>
-                      <div class="emt-course-meta">
-                          <div class="row">
-                              <div class="col-6">
-                                  <div class="rating">
-                                      <i class="fa fa-star"></i> 4.9
-                                      <span>(73)</span>
-                                  </div>
-                              </div>
-                              <div class="col-lg-6">
-                                  <div class="price text-right">
-                                      Price: <span>$74.00</span>
+                                      Price: <span>553</span>
                                   </div>
                               </div>
                           </div>

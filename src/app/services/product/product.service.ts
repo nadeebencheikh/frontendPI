@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Product} from "../../Models/Product";
 //import {Product} from "../../Models/Product";
 
 @Injectable({
@@ -12,7 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
   addProduct(product:any) {
-    return this.http.post<any>(this.baseUrl + `/api/product/add`, product);
+    return this.http.post<any>(this.baseUrl + `/api/product/add/images`, product);
   }
   updateProduct(product:any){
     return this.http.put<any>(this.baseUrl + `/api/product/update`, product);
@@ -33,7 +34,7 @@ export class ProductService {
     return this.http.get<any>(this.baseUrl + `/api/product/get_all`);
   }
   FindProductById(productId: number) {
-   // return this.http.get<Product>(`${this.baseUrl}/api/product/get/${productId}`);
+    return this.http.get<Product>(`${this.baseUrl}/api/product/get/${productId}`);
   }
 
 
