@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class SubCategoryService {
 
   baseUrl = "http://localhost:8085"
 
@@ -27,14 +27,14 @@ export class ProductService {
     return this.http.get<any>(this.baseUrl + `/api/product/get_product_By_Subcategory/${categoryName}`);
   }
 
-  GetAllSubCategories() {
-    return this.http.get<any>(this.baseUrl + `/api/SubCategory/all_subcategories`);
-  }
+
   FindSubCategoryById(SubCategoryId: number) {
 //    return this.http.get<SubCategory>(`${this.baseUrl}/api/SubCategory/get/${SubCategoryId}`);
   }
 
 
-
+  GetAllSubCategories() {
+    return this.http.get<any>(this.baseUrl + `/api/SubCategory/all_subcategories`);
+  }
 
 }

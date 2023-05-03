@@ -10,6 +10,8 @@ import { PotGridComponent } from './pages/pot-grid/pot-grid.component';
 import { PotDetailsComponent } from './pages/pot-details/pot-details.component';
 import { EventDetailComponent } from './pages/event-detail/event-detail.component';
 import { ProductsDetailsComponent } from './pages/products-details/products-details.component';
+import {AddProductComponent} from "./add-product/add-product.component";
+
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ResetmailComponent } from './pages/reset/resetmail/resetmail.component';
@@ -20,6 +22,7 @@ const routes: Routes = [
   { path:'reset',  component: ResetmailComponent },
   { path:'signup',  component: SignupComponent },
   { path:'',  component: HomeComponent },
+  { path:'addproduct',  component: AddProductComponent },
   { path:'home',  component: HomeComponent },
   { path:'about',  component: AboutComponent },
   { path:'contact',  component: ContactComponent },
@@ -29,7 +32,8 @@ const routes: Routes = [
   { path:'event',  component: EventComponent },
   { path:'eventdetail',  component: EventDetailComponent},
   { path:'product',  component: ProductsComponent },
-  { path:'productdetail',  component: ProductsDetailsComponent },
+  { path:'productdetail/:id',  component: ProductsDetailsComponent },
+
   {
     path: '**',
     redirectTo: 'home'
