@@ -1,0 +1,31 @@
+.input-false  {
+  border-color: red;
+  border-style: solid;
+  border-bottom-width: 2px;
+}
+.ii{
+  margin-top: 10px;
+  color:rgb(211, 211, 211);
+  margin-right: 3px;
+  cursor:pointer;
+}
+.input-true {
+  border-color: green;
+  border-style: solid;
+  border-bottom-width: 2px;
+}
+.invalid-msg {
+  color: red;
+}
+
+.valid-msg {
+  color: green;
+}
+.sp{
+  color: #0ec646;
+    font-size: 15px;
+}
+.sp2{
+  color: #ececec;
+    font-size: 15px;
+}
