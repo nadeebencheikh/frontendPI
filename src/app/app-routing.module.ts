@@ -13,6 +13,7 @@ import { ProductsDetailsComponent } from './pages/products-details/products-deta
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ResetmailComponent } from './pages/reset/resetmail/resetmail.component';
+import { ClaimComponent } from './pages/claim/claim.component';
 
 const routes: Routes = [
 
@@ -25,11 +26,12 @@ const routes: Routes = [
   { path:'contact',  component: ContactComponent },
   { path:'pot',  component: PotComponent },
   { path:'potgrid',  component: PotGridComponent },
-  { path:'potdetail',  component: PotDetailsComponent},
+  { path:'potdetail/:idPot',  component: PotDetailsComponent},
   { path:'event',  component: EventComponent },
   { path:'eventdetail',  component: EventDetailComponent},
   { path:'product',  component: ProductsComponent },
   { path:'productdetail',  component: ProductsDetailsComponent },
+  { path:'claim',  component: ClaimComponent},
   {
     path: '**',
     redirectTo: 'home'

@@ -16,42 +16,48 @@
   <!-- breadcrumb end -->
 
   <!-- blog area start -->
-  <div class="blog-area pd-top-120 pd-bottom-120">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-4 col-md-6">
-                  <div class="single-blog-inner style-border">
-                      <div class="thumb">
-                          <img src="assets/img/blog/4.png" alt="img">
-                      </div>
-                      <div class="details">
-                          <ul class="blog-meta">
-                              <li><i class="fa fa-user"></i> BY ADMIN</li>
-                              <li><i class="fa fa-calendar-check-o"></i> 28 JANUARY, 2020</li>
-                          </ul>
-                          <h5 class="title"><a href="blog-details.html">Flock by when MTV ax quiz prog quiz graced</a>
-                          </h5>
-                          <p>Lorem ipsum dolor sit amet sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                              magna</p>
-                          <a class="read-more-text" href="blog-details.html">READ MORE <i
-                                  class="fa fa-angle-right"></i></a>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-12 text-center">
-                  <nav class="td-page-navigation">
-                      <ul class="pagination">
-                          <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                          <li><a href="#">1</a></li>
-                          <li><a class="active" href="#">2</a></li>
-                          <li><a href="#">...</a></li>
-                          <li><a href="#">3</a></li>
-                          <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                      </ul>
-                  </nav>
-              </div>
+  <div class="blog-area pd-top-120 pd-bottom-120 text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="single-blog-inner m style-border" [routerLink]="['/pot']">
+            <div class="thumb">
+              <img src="assets/img/blog/u.png" alt="img">
+            </div>
+            <div class="details"></div>
           </div>
+        </div>
+        <div *ngFor="let item of  getVisiblePosts()" class="col-lg-4 col-md-6">
+          <div class="single-blog-inner style-border">
+            <div class="thumb">
+              <img [src]="getImageSrc(item.image)" alt="image">
+            </div>
+            <div class="details">
+              <ul class="blog-meta">
+                <li><i class="fa fa-user"></i>{{item.user.name}} {{item.user.lastname}}</li>
+                <li><i class="fa fa-calendar-check-o"></i> {{item.createDate | date:'dd-MM-yyyy' }}</li>
+              </ul>
+              <h5 class="title"><a [routerLink]="['/potdetail', item.idPot]">{{item.title}}</a></h5>
+              <a class="read-more-text" [routerLink]="['/potdetail', item.idPot]">>READ MORE <i class="fa fa-angle-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 text-center">
+          <nav class="td-page-navigation">
+            <ul class="pagination">
+              <li class="pagination-arrow" *ngIf="currentPage > 1"><a (click)="previousPage()"><i class="fa fa-angle-double-left"></i></a></li>
+
+              <li *ngFor="let page of pages" [ngClass]="{ 'active': currentPage === page }">
+                <a (click)="goToPage(page)">{{ page }}</a>
+              </li>
+
+              <li class="pagination-arrow" *ngIf="currentPage < totalPages"><a (click)="nextPage()"><i class="fa fa-angle-double-right"></i></a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
+    </div>
   </div>
+
   <!-- blog area end -->
+
