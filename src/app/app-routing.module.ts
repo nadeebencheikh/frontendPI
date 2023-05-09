@@ -30,7 +30,7 @@ const routes: Routes = [
   { path:'potgrid',  component: PotGridComponent },
   { path:'potdetail',  component: PotDetailsComponent},
   { path:'event',  component: EventComponent },
-  { path:'eventdetail',  component: EventDetailComponent},
+  { path:'eventdetail/:id',  component: EventDetailComponent},
   { path:'product',  component: ProductsComponent },
   { path:'productdetail/:id',  component: ProductsDetailsComponent },
 

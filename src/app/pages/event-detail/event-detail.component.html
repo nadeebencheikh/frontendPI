@@ -1,5 +1,5 @@
-  <!-- breadcrumb start -->
-  <div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/3.png')">
+<!-- breadcrumb start -->
+<div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/3.png')">
     <div class="container">
         <div class="breadcrumb-inner">
             <div class="section-title mb-0 text-center">
@@ -21,42 +21,21 @@
             <div class="col-lg-8 order-lg-12">
                 <div class="event-detaila-inner">
                     <div class="thumb mb-4">
-                        <img src="assets/img/other/5.png" alt="img">
+                        <img [src]="getImageSrc(event!.image)" alt="img">
                     </div>
                     <ul class="event-meta">
-                        <li><i class="fa fa-clock-o"></i> 12:00 AM To 11:59 PM</li>
-                        <li><i class="fa fa-map-marker"></i> Melbourne, Australia</li>
+                        <li><i class="fa fa-clock-o"></i> {{event!.eventDate| date: 'hh:mm:ss a'}} To {{event!.endDate| date: 'hh:mm:ss a'}}</li>
+                        <li><i class="fa fa-map-marker"></i> {{event!.location}}</li>
                     </ul>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-                        et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-                        Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                        voluptua. At vero eos et accusam et justo duo dolores et ea</p>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-                        et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-                        Lorem ipsum dolor sit amet. Lorem</p>
-                    <div class="row pt-4 pb-4">
-                        <div class="col-lg-5">
-                            <div class="thumb mb-3 mb-lg-0">
-                                <img src="assets/img/other/6.png" alt="img">
-                            </div>
+                    <p>{{event!.detail}}</p>
+                   
+                        <!-- ... widget content ... -->
+                        <div class="widget-btn">
+                            <a *ngIf="checkk" (click) = "participer(event!.idEvent)" class="btn btn-primary">Participate</a>
+                            <a *ngIf="!checkk" (click) = "annuler(event!.idEvent)" class="btn btn-primary">Remove Participation</a>
                         </div>
-                        <div class="col-lg-7 align-self-center">
-                            <h6>Quality Control System</h6>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
-                            <h6>Highly Professional Staff</h6>
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                eirmod</p>
-                        </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-                        et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-                        Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                        voluptua. At vero eos et accusam et justo duo dolores et ea</p>
+
+                    
                 </div>
             </div>
             <div class="col-lg-4 order-lg-1">
@@ -64,12 +43,13 @@
                     <div class="widget widget_event">
                         <h4 class="widget-title text-white">Event Info :</h4>
                         <ul>
-                            <li><i class="fa fa-calendar"></i>Start Date: 12:00 AM</li>
-                            <li><i class="fa fa-clock-o"></i>Start Time: May 08</li>
-                            <li><i class="fa fa-calendar"></i>End Date: April 04</li>
-                            <li><i class="fa fa-clock-o"></i>End Time: 11:59 PM</li>
-                            <li><i class="fa fa-ticket"></i>Number of Participants: 10</li>
-                            <li><i class="fa fa-map-marker"></i>Location: Melbourne, Australia</li>
+                            <li><i class="fa fa-calendar"></i>Start Date: {{event!.eventDate| date:'d MMM'}}</li>
+                            <li><i class="fa fa-clock-o"></i>Start Time: {{event!.eventDate| date: 'hh:mm:ss a'}}</li>
+                            <li><i class="fa fa-calendar"></i>End Date: {{event!.endDate| date:'d MMM'}}</li>
+                            <li><i class="fa fa-clock-o"></i>End Time: {{event!.endDate| date: 'hh:mm:ss a'}}</li>
+                            <li><i class="fa fa-ticket"></i>Number of Participants: {{event!.nombreParticipants}}</li>
+                            <li><i class="fa fa-map-marker"></i>Location: {{event!.location}}</li>
+                           
                         </ul>
                     </div>
                     <div class="widget widget_catagory">
@@ -79,26 +59,10 @@
                                 src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d29208.601361499546!2d90.3598076!3d23.7803374!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1589109092857!5m2!1sen!2sbd"></iframe>
                         </div>
                     </div>
-                    <div class="widget widget-contact">
-                        <h4 class="widget-title">Get a Quote</h4>
-                        <div class="single-input-inner style-right-icon">
-                            <input type="text" placeholder="Full name">
-                            <img src="assets/img/icon/25.png" alt="img">
-                        </div>
-                        <div class="single-input-inner style-right-icon">
-                            <input type="text" placeholder="Email Address">
-                            <img src="assets/img/icon/26.png" alt="img">
-                        </div>
-                        <div class="single-input-inner style-right-icon">
-                            <textarea placeholder="Your Message"></textarea>
-                            <img src="assets/img/icon/27.png" alt="img">
-                        </div>
-                        <a class="btn btn-base" href="#">Send Message</a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- course-single area end -->
-

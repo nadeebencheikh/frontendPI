@@ -16,129 +16,35 @@
 
 <!-- event area start -->
 <div class="event-area pd-top-120 pd-bottom-120">
+    <tr  >
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="media single-event-inner">
+            <div  *ngFor = "let event of events">
+            <div *ngIf="event.status===1" class="col-lg-6" >
+                
+                <div class="media single-event-inner" >
                     <div class="media-left date">
-                        <span>JAN</span>
-                        12
+                        
+                        <span>{{event.eventDate| date:'MMM'}}</span>
+                        <br>
+                        {{event.eventDate| date:'d'}}
                     </div>
                     <div class="media-body details">
                         <ul class="blog-meta">
-                            <li><i class="fa fa-clock-o"></i> 12:00 AM To 11:59 PM</li>
-                            <li><i class="fa fa-map-marker"></i> Melbourne, Australia</li>
+                            <li><i class="fa fa-clock-o"></i> {{event.eventDate| date: 'hh:mm:ss a'}} To {{event.endDate| date: 'hh:mm:ss a'}}</li>
+                            <li><i class="fa fa-map-marker"></i> {{event.location}}</li>
                         </ul>
-                        <h5><a href="event-details.html">The quick, brown fox jumps over a lazy by when MTV ax</a>
+                        <h5><a routerLink="/eventdetail" (click) = "eventDetails(event.idEvent!)" >{{event.title}}</a>
                         </h5>
-                        <p>Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump;
-                            dozy fowl quack. Quick wafting zephyrs vex</p>
+                        <p>{{event.detail}}</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="media single-event-inner">
-                    <div class="media-left date">
-                        <span>JAN</span>
-                        23
-                    </div>
-                    <div class="media-body details">
-                        <ul class="blog-meta">
-                            <li><i class="fa fa-clock-o"></i> 12:00 AM To 11:59 PM</li>
-                            <li><i class="fa fa-map-marker"></i> Melbourne, Australia</li>
-                        </ul>
-                        <h5><a href="event-details.html">jumps over a lazy by The quick, brown fox when MTV ax</a>
-                        </h5>
-                        <p>Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump;
-                            dozy fowl quack. Quick wafting zephyrs vex</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="media single-event-inner">
-                    <div class="media-left date">
-                        <span>JAN</span>
-                        26
-                    </div>
-                    <div class="media-body details">
-                        <ul class="blog-meta">
-                            <li><i class="fa fa-clock-o"></i> 12:00 AM To 11:59 PM</li>
-                            <li><i class="fa fa-map-marker"></i> Melbourne, Australia</li>
-                        </ul>
-                        <h5><a href="event-details.html">when MTV ax The quick, brown fox jumps over a lazy by</a>
-                        </h5>
-                        <p>Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump;
-                            dozy fowl quack. Quick wafting zephyrs vex</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="media single-event-inner">
-                    <div class="media-left date">
-                        <span>JAN</span>
-                        30
-                    </div>
-                    <div class="media-body details">
-                        <ul class="blog-meta">
-                            <li><i class="fa fa-clock-o"></i> 12:00 AM To 11:59 PM</li>
-                            <li><i class="fa fa-map-marker"></i> Melbourne, Australia</li>
-                        </ul>
-                        <h5><a href="event-details.html">Fox nymphs grab fox jumps over a lazy by when MTV ax</a>
-                        </h5>
-                        <p>The quick, brown quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens
-                            jump; dozy fowl quack. Quick wafting zephyrs vex</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="media single-event-inner">
-                    <div class="media-left date">
-                        <span>FEB</span>
-                        22
-                    </div>
-                    <div class="media-body details">
-                        <ul class="blog-meta">
-                            <li><i class="fa fa-clock-o"></i> 12:00 AM To 11:59 PM</li>
-                            <li><i class="fa fa-map-marker"></i> Melbourne, Australia</li>
-                        </ul>
-                        <h5><a href="event-details.html">Melbourne brown fox jumps over a lazy by when MTV ax</a>
-                        </h5>
-                        <p>Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump;
-                            dozy fowl quack. Quick wafting zephyrs vex</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="media single-event-inner">
-                    <div class="media-left date">
-                        <span>FEB</span>
-                        25
-                    </div>
-                    <div class="media-body details">
-                        <ul class="blog-meta">
-                            <li><i class="fa fa-clock-o"></i> 12:00 AM To 11:59 PM</li>
-                            <li><i class="fa fa-map-marker"></i> Melbourne, Australia</li>
-                        </ul>
-                        <h5><a href="event-details.html">The quick, brown fox jumps over a lazy by when MTV ax</a>
-                        </h5>
-                        <p>Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump;
-                            dozy fowl quack. Quick wafting zephyrs vex</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <nav class="td-page-navigation text-center">
-                    <ul class="pagination">
-                        <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a class="active" href="#">2</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">3</a></li>
-                        <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
+        </div>
     </div>
-</div>
+    </tr>
+    </div>
+                
+           
 <!-- event area end -->
