@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product/product.service";
 import {Product} from '../../Models/Product';
-import {CookiesService} from "../../services/cookie/cookies.service";
+import { CookiesService } from 'src/app/services/cookie/cookies.service';
 import {HttpErrorResponse} from "@angular/common/http";
 import {Category} from "../../Models/Category";
 import {CategoryService} from "../../services/Category/Category.service";
@@ -31,11 +31,11 @@ export class ProductsComponent implements OnInit{
   this.jwt = cs.getCookieJWT().toString()
   }
   GetAllProducts() {
-    this.productService.GetAllProducts()
+    this.productService.GetAllProducts(this.jwt)
       .subscribe(
         (response: Product[]) => {
           for (let product of response) {
-            this.ImageService.GetImageByIdProduct(product.idProduct)
+            this.ImageService.GetImageByIdProduct(product.idProduct,this.jwt)
               .subscribe((value: any) => {
                 product.ProductImages = this.ImageService.createImage(value);
                 if(product.status == 1){
@@ -54,7 +54,7 @@ export class ProductsComponent implements OnInit{
   }
 
   getAllCategories() {
-    this.CategoryService.GetAllCategories()
+    this.CategoryService.GetAllCategories(this.jwt)
       .subscribe((response: Category[]) => {
           this.categories = response;
 
@@ -72,10 +72,10 @@ export class ProductsComponent implements OnInit{
   GetProductsByCategory(category: any) {
     this.products = [];
     for(let subcategory of category.subcategories) {
-      this.SubCategoryService.GetProductBySubCategroy(subcategory.idSubCategory).subscribe(
+      this.SubCategoryService.GetProductBySubCategroy(subcategory.idSubCategory,this.jwt).subscribe(
         (response: Product[]) => {
           for (let product of response) {
-            this.ImageService.GetImageByIdProduct(product.idProduct).subscribe((value: any) => {
+            this.ImageService.GetImageByIdProduct(product.idProduct,this.jwt).subscribe((value: any) => {
               product.ProductImages = this.ImageService.createImage(value);
               this.products.push(product);
             });
