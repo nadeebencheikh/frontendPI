@@ -11,10 +11,13 @@ import { PotDetailsComponent } from './pages/pot-details/pot-details.component';
 import { EventDetailComponent } from './pages/event-detail/event-detail.component';
 import { ProductsDetailsComponent } from './pages/products-details/products-details.component';
 import {AddProductComponent} from "./add-product/add-product.component";
+import {PostComponent} from "./pages/post/post.component";
+import {ForumComponent} from "./pages/forum/forum.component";
 
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ResetmailComponent } from './pages/reset/resetmail/resetmail.component';
+
 
 const routes: Routes = [
 
@@ -33,6 +36,8 @@ const routes: Routes = [
   { path:'eventdetail',  component: EventDetailComponent},
   { path:'product',  component: ProductsComponent },
   { path:'productdetail/:id',  component: ProductsDetailsComponent },
+  { path:'post',  component: PostComponent },
+  { path:'forum',  component: ForumComponent },
 
   {
     path: '**',

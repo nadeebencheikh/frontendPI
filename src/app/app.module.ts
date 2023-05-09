@@ -29,6 +29,8 @@ import { ResetmailComponent } from './pages/reset/resetmail/resetmail.component'
 import { ResetpassComponent } from './pages/reset/resetpass/resetpass.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CookieService } from 'ngx-cookie-service';
+import { PostComponent } from './pages/post/post.component';
+import { ForumComponent } from './pages/forum/forum.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { CookieService } from 'ngx-cookie-service';
     SignupComponent,
     ResetmailComponent,
     ResetpassComponent,
+    PostComponent,
+    ForumComponent,
 
   ],
   imports: [
