@@ -9,7 +9,7 @@ import {SubCategory} from "../../Models/SubCategory";
 import {Image} from "../../Models/Image";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ProductService} from "../../services/product/product.service";
-import {CookiesService} from "../../services/cookie/cookies.service";
+import { CookiesService } from 'src/app/services/cookie/cookies.service';
 import {SubCategoryService} from "../../services/Category/SubCategory.service";
 import {ImageService} from "../../services/Image/Image.service";
 import {CategoryService} from "../../services/Category/Category.service";
@@ -25,7 +25,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class NavbarComponent implements OnInit {
 
   products: Product[] = [];
-  jwt!: string;
+
   currentProduct!: Product;
   categories: Category[] = [];
   SubCategories: SubCategory[] = [];
@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
   filteredSubCategories: SubCategory[] = [];
   id!: number;
   user : User = {idUser: 1, name: '', products : [] , favorite: {idFavoris:1 ,Subcategories: []}};
- 
+
  loggedin=false;
   constructor(private activatedRoute: ActivatedRoute, private _router: Router,
               private productService: ProductService,
@@ -41,7 +41,10 @@ export class NavbarComponent implements OnInit {
               private SubCategoryService: SubCategoryService,
               private cs: CookiesService,
               private ImageService: ImageService,
-              private CategoryService: CategoryService, private UserService: UserService){}
+              private CategoryService: CategoryService, private UserService: UserService){
+                this.jwt=this.cs.getCookieJWT().toString();
+              }
+              jwt: string;
   public productToAdd: Product = {
     idProduct: 0,
     title: '',
@@ -55,10 +58,10 @@ export class NavbarComponent implements OnInit {
     ProductImages: [],
     commandes:[]
   }
- 
+
 
   getAllCategories() {
-    this.CategoryService.GetAllCategories()
+    this.CategoryService.GetAllCategories(this.jwt)
       .subscribe((response: Category[]) => {
           this.categories = response;
 
@@ -71,7 +74,7 @@ export class NavbarComponent implements OnInit {
   }
 
   getAllSubCategories() {
-    this.SubCategoryService.GetAllSubCategories()
+    this.SubCategoryService.GetAllSubCategories(this.jwt)
       .subscribe((response: SubCategory[]) => {
           this.SubCategories = response;
           console.log(this.SubCategories)
@@ -84,7 +87,7 @@ export class NavbarComponent implements OnInit {
     const product = this.prepareFormData(this.productToAdd)
     console.log(product)
     console.log(this.productToAdd)
-    this.productService.addProduct(product)
+    this.productService.addProduct(product, this.jwt)
       .subscribe((response: Product) => {
 
           setTimeout(function () {
@@ -92,7 +95,7 @@ export class NavbarComponent implements OnInit {
             window.location.reload();
           }, 2000);
 
- 
+        })}
 
   ngOnInit(): void {
     this.getAllCategories();
@@ -102,11 +105,7 @@ export class NavbarComponent implements OnInit {
     console.log(this.loggedin+"--------------");
 
 
-        },
-        (error: HttpErrorResponse) => {
-          console.log(error.message);
-        }
-      );
+
 
   }
 

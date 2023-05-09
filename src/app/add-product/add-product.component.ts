@@ -8,7 +8,7 @@ import {User} from "../Models/User";
 import {Image} from "../Models/Image";
 import {Router} from "@angular/router";
 import {ProductService} from "../services/product/product.service";
-import {CookiesService} from "../services/cookie/cookies.service";
+import { CookiesService } from 'src/app/services/cookie/cookies.service';
 import {ImageService} from "../services/Image/Image.service";
 import {CategoryService} from "../services/Category/Category.service";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -70,7 +70,7 @@ export class AddProductComponent implements OnInit{
 
 
   getAllCategories() {
-    this.CategoryService.GetAllCategories()
+    this.CategoryService.GetAllCategories(this.jwt)
       .subscribe((response: Category[]) => {
           this.categories = response;
 
@@ -83,7 +83,7 @@ export class AddProductComponent implements OnInit{
   }
 
   getAllSubCategories() {
-    this.SubCategoryService.GetAllSubCategories()
+    this.SubCategoryService.GetAllSubCategories(this.jwt)
       .subscribe((response: SubCategory[]) => {
           this.SubCategories = response;
           console.log(this.SubCategories)
@@ -96,7 +96,7 @@ export class AddProductComponent implements OnInit{
     const product = this.prepareFormData(this.productToAdd)
     console.log(product)
     console.log(this.productToAdd)
-    this.productService.addProduct(product)
+    this.productService.addProduct(product,this.jwt)
       .subscribe((response: Product) => {
 
           setTimeout(function () {

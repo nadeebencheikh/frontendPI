@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 //import {SubCategory} from "../../Models/SubCategory";
 
 @Injectable({
@@ -11,30 +11,40 @@ export class SubCategoryService {
 
   constructor(private http: HttpClient) {
   }
-  addSubCategory(SubCategory:any) {
-    return this.http.post<any>(this.baseUrl + `/api/SubCategory/add`, SubCategory);
+  addSubCategory(SubCategory:any, token : any) {
+    return this.http.post<any>(this.baseUrl + `/api/SubCategory/add`, SubCategory,{
+      headers:new HttpHeaders({ authorization : 'Bearer '+token })
+    });
   }
-  updateSubCategory(SubCategory:any){
-    return this.http.put<any>(this.baseUrl + `/api/SubCategory/update`, SubCategory);
+  updateSubCategory(SubCategory:any , token : any){
+    return this.http.put<any>(this.baseUrl + `/api/SubCategory/update`, SubCategory,{
+      headers:new HttpHeaders({ authorization : 'Bearer '+token })
+    });
   }
   deleteSubCategory(SubCategoryId:any) {
    // return this.http.delete<SubCategory>(this.baseUrl + `/api/SubCategory/delete/${SubCategoryId}`);
   }
-  addCategoryToProduct(productId:any, categoryId:any) {
-    return this.http.get<any>(this.baseUrl + `/api/product/addSubCategoryToProduct/${productId}/${categoryId}`);
+  addCategoryToProduct(productId:any, categoryId:any , token : any) {
+    return this.http.get<any>(this.baseUrl + `/api/product/addSubCategoryToProduct/${productId}/${categoryId}`,{
+      headers:new HttpHeaders({ authorization : 'Bearer '+token })
+    });
   }
-  GetProductBySubCategroy(categoryName:any) {
-    return this.http.get<any>(this.baseUrl + `/api/product/get_product_By_Subcategory/${categoryName}`);
+  GetProductBySubCategroy(categoryName:any, token : any) {
+    return this.http.get<any>(this.baseUrl + `/api/product/get_product_By_Subcategory/${categoryName}`,{
+      headers:new HttpHeaders({ authorization : 'Bearer '+token })
+    });
   }
 
 
-  FindSubCategoryById(SubCategoryId: number) {
+  FindSubCategoryById(SubCategoryId: number,token : any) {
 //    return this.http.get<SubCategory>(`${this.baseUrl}/api/SubCategory/get/${SubCategoryId}`);
   }
 
 
-  GetAllSubCategories() {
-    return this.http.get<any>(this.baseUrl + `/api/SubCategory/all_subcategories`);
+  GetAllSubCategories(token : any) {
+    return this.http.get<any>(this.baseUrl + `/api/SubCategory/all_subcategories`,{
+      headers:new HttpHeaders({ authorization : 'Bearer '+token })
+    });
   }
 
 }

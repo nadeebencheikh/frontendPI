@@ -12,8 +12,10 @@ export class CategoryService {
 
   constructor(private http: HttpClient) {
   }
-  GetAllCategories() {
-    return this.http.get<any>(this.baseUrl + `/api/Category/all_categories`);
+  GetAllCategories(token : any) {
+    return this.http.get<any>(this.baseUrl + `/api/Category/all_categories`,{
+      headers:new HttpHeaders({ authorization : 'Bearer '+token })
+    });
   }
 }
 
