@@ -82,16 +82,16 @@
           <div class="widget widget_search_course">
             <h4 class="widget-title">Search</h4>
             <form class="search-form single-input-inner">
-              <input type="text" placeholder="Search here">
-              <button class="btn btn-base w-100 mt-3" type="submit"><i class="fa fa-search"></i>
+              <input type="text" placeholder="Search here" name="searchTerm" [(ngModel)]="searchTerm" (keyup)="UpdateFields()" >
+              <button class="btn btn-base w-100 mt-3" type="submit" (click)="searchProducts()"><i class="fa fa-search"></i>
                 SEARCH
               </button>
             </form>
           </div>
           <div class="widget widget_catagory">
             <h4 class="widget-title">Catagory</h4>
-            <ul class="catagory-items" *ngFor="let Category of categories">
-              <li><a (click)="GetProductsByCategory(Category.idCategory)">{{Category.name}} <i
+            <ul class="catagory-items mt-3" *ngFor="let Category of categories">
+              <li><a class="mt-" (click)="GetProductsByCategory(Category)">{{Category.name}} <i
                 class="fa fa-caret-right"></i></a></li>
             </ul>
           </div>

@@ -25,7 +25,7 @@ export class ProductsDetailsComponent implements OnInit {
   }
 
   public productId: any = 0;
-  user : User = {idUser: 1, name: '', products : [] , favorite: {idFavoris:1 ,fSubCatrgory: []}};
+  user : User = {idUser: 1, name: '', products : [] , favorite: {idFavoris:1 ,Subcategories: []}};
   FavoriteProducts : Product[] = [] ;
   SimilarProduct: boolean = true;
 
@@ -84,6 +84,7 @@ export class ProductsDetailsComponent implements OnInit {
 
   AddCommande(Product: Product) {
     this.commande.product = Product;
+    console.log(this.commande)
     this.CommandeService.AddCommande(this.commande).subscribe((response: Commande) => {})
   }
 }

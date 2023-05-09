@@ -31,7 +31,7 @@ export class AddProductComponent implements OnInit{
   productForm!: FormGroup;
   filteredSubCategories: SubCategory[] = [];
   id!: number;
-  user : User = {idUser: 1, name: '', products : [] , favorite: {idFavoris:1 ,fSubCatrgory: []}};
+  user : User = {idUser: 1, name: '', products : [] , favorite: {idFavoris:1 ,Subcategories: []}};
 
   constructor(private R: Router,
               private productService: ProductService,
