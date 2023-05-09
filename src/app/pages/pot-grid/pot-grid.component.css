@@ -1,0 +1,32 @@
+.single-blog-inner {
+  height: 400px;
+}
+.create-pot-btn {
+  background-color: #f5d042;
+  color: black;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-pot-btn:hover {
+  background-color: #f5d042;
+}
+.m:hover .details:before {
+  content: "My Pots";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #a19b9b87;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.m:hover .create-pot-btn {
+  display: block;
+}

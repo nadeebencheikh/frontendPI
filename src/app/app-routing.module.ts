@@ -17,31 +17,46 @@ import {ForumComponent} from "./pages/forum/forum.component";
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ResetmailComponent } from './pages/reset/resetmail/resetmail.component';
+import { ClaimComponent } from './pages/claim/claim.component';
+
+import { ResetpassComponent } from './pages/reset/resetpass/resetpass.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { AuthGuard } from './variables/auth.guard';
+
 
 
 const routes: Routes = [
 
   { path:'login',  component: LoginComponent },
+  { path:'profile',  component: ProfileComponent,  canActivate : [AuthGuard] },
   { path:'reset',  component: ResetmailComponent },
+  { path:'change_password',  component: ResetpassComponent },
   { path:'signup',  component: SignupComponent },
-  { path:'',  component: HomeComponent },
-  { path:'addproduct',  component: AddProductComponent },
-  { path:'home',  component: HomeComponent },
-  { path:'about',  component: AboutComponent },
-  { path:'contact',  component: ContactComponent },
-  { path:'pot',  component: PotComponent },
-  { path:'potgrid',  component: PotGridComponent },
-  { path:'potdetail',  component: PotDetailsComponent},
-  { path:'event',  component: EventComponent },
+
+ 
+  { path:'potdetail/:idPot',  component: PotDetailsComponent,  canActivate : [AuthGuard]},
+ 
+  { path:'claim',  component: ClaimComponent},
+
+
+  { path:'',  component: HomeComponent ,  canActivate : [AuthGuard]},
+  { path:'home',  component: HomeComponent ,  canActivate : [AuthGuard]},
+  { path:'about',  component: AboutComponent ,  canActivate : [AuthGuard]},
+  { path:'contact',  component: ContactComponent ,  canActivate : [AuthGuard]},
+  { path:'pot',  component: PotComponent ,  canActivate : [AuthGuard]},
+  { path:'potgrid',  component: PotGridComponent,  canActivate : [AuthGuard] },
+  { path:'event',  component: EventComponent,  canActivate : [AuthGuard] },
   { path:'eventdetail',  component: EventDetailComponent},
-  { path:'product',  component: ProductsComponent },
-  { path:'productdetail/:id',  component: ProductsDetailsComponent },
+
+  { path:'product',  component: ProductsComponent ,  canActivate : [AuthGuard]},
+     { path:'productdetail/:id',  component: ProductsDetailsComponent,  canActivate : [AuthGuard] },
   { path:'post',  component: PostComponent },
   { path:'forum',  component: ForumComponent },
 
+
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'login'
   }
 ];
 

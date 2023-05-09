@@ -8,6 +8,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import { Router } from '@angular/router';
 import {Commande} from "../../Models/Commande";
 import {CommandeService} from "../../services/Commande/Commande.service";
+import { CookiesService } from 'src/app/services/cookie/cookies.service';
 
 @Component({
   selector: 'app-products-details',
@@ -16,16 +17,19 @@ import {CommandeService} from "../../services/Commande/Commande.service";
 })
 export class ProductsDetailsComponent implements OnInit {
   currentProduct!: Product;
+  jwt : string;
 
   constructor(private imageService: ImageService,
               private ProductService: ProductService,
               private route: ActivatedRoute,
               private router: Router,
-              private CommandeService : CommandeService) {
+              private CommandeService : CommandeService,
+              private cs : CookiesService) {
+                this.jwt = cs.getCookieJWT().toString()
   }
 
   public productId: any = 0;
-  user : User = {idUser: 1, name: '', products : [] , favorite: {idFavoris:1 ,fSubCatrgory: []}};
+  user : User = {idUser: 1, name: '', products : [] , favorite: {idFavoris:1 ,Subcategories: []}};
   FavoriteProducts : Product[] = [] ;
   SimilarProduct: boolean = true;
 
@@ -39,9 +43,9 @@ export class ProductsDetailsComponent implements OnInit {
   }
   editOrder: boolean = false;
   ngOnInit(): void {
-    this.ProductService.GetProductByFavorite(this.user.idUser).subscribe((response: Product[]) => {
+    this.ProductService.GetProductByFavorite(this.user.idUser,this.jwt).subscribe((response: Product[]) => {
         for (let product of response) {
-          this.imageService.GetImageByIdProduct(product.idProduct)
+          this.imageService.GetImageByIdProduct(product.idProduct,this.jwt)
             .subscribe((value: any) => {
                 product.ProductImages = this.imageService.createImage(value);
                 this.FavoriteProducts.push(product);
@@ -57,10 +61,10 @@ export class ProductsDetailsComponent implements OnInit {
     );
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.productId = params.get('id');
-      this.ProductService.FindProductById(this.productId).subscribe(
+      this.ProductService.FindProductById(this.productId,this.jwt).subscribe(
         (product: any) => {
           this.currentProduct = product;
-          this.imageService.GetImageByIdProduct(product.idProduct).subscribe(
+          this.imageService.GetImageByIdProduct(product.idProduct,this.jwt).subscribe(
             (value: any) => {
               product.ProductImages = this.imageService.createImage(value);
             },
@@ -84,6 +88,7 @@ export class ProductsDetailsComponent implements OnInit {
 
   AddCommande(Product: Product) {
     this.commande.product = Product;
-    this.CommandeService.AddCommande(this.commande).subscribe((response: Commande) => {})
+    console.log(this.commande)
+    this.CommandeService.AddCommande(this.commande,this.jwt).subscribe((response: Commande) => {})
   }
 }

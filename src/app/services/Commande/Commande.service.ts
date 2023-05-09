@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Commande} from "../../Models/Commande";
 //import {SubCategory} from "../../Models/SubCategory";
 
@@ -13,7 +13,9 @@ export class CommandeService {
   constructor(private http: HttpClient) {
   }
 
-  AddCommande(Commande: any) {
-    return this.http.post<any>(this.baseUrl + `/api/Commande/add`, Commande);
+  AddCommande(Commande: any, token : any) {
+    return this.http.post<any>(this.baseUrl + `/api/Commande/add`, Commande,{
+      headers:new HttpHeaders({ authorization : 'Bearer '+token })
+    });
   }
 }
