@@ -57,6 +57,7 @@
                   </div>
               </div>
           </div>
+
           <div class="nav-right-part nav-right-part-desktop style-black">
             <div class="emt-phone-wrap">
                 <div class="emt-phone">
@@ -64,7 +65,7 @@
                     <div class="phone-number align-self-center">
                       <div class="collapse navbar-collapse" id="edumint_main_menu">
                         <ul class="navbar-nav menu-open " style="padding-left: 0px;">
-                          <li class="menu-item current-menu-item">
+                          <li class="menu-item current-menu-item" *ngIf="loggedin">
                               <a routerLink="login" routerLinkActive="active">Logout</a>
                           </li>
                         </ul>
@@ -73,6 +74,23 @@
                 </div>
             </div>
         </div>
+
+        <div class="nav-right-part nav-right-part-desktop style-black" *ngIf="loggedin">
+          <div class="emt-phone-wrap">
+              <div class="emt-phone">
+                <i class="fa fa-user css" (click)="profile()"></i>
+                  <div class="phone-number align-self-center">
+                    <div class="collapse navbar-collapse" id="edumint_main_menu">
+                      <ul class="navbar-nav menu-open " style="padding-left: 0px;">
+
+                      </ul>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
       </div>
   </nav>
 </div>

@@ -12,8 +12,14 @@ export class NavbarComponent implements OnInit {
  loggedin=false;
 
   ngOnInit(): void {
+    //window.location.reload();
     this.loggedin=this.UserService.isLoggedInUser();
     console.log(this.loggedin+"--------------");
-  }
 
+  }
+profile(){
+  console.log("peeeeeeeeeee")
+  this._router.navigate(['/profile']);
+
+}
 }

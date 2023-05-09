@@ -12,7 +12,8 @@ import jwt_decode from 'jwt-decode';
 })
 export class LoginComponent implements OnInit {
   constructor( private _router: Router ,private ls :LoginService,private CS: CookiesService) { }
-
+err=false;
+message="";
   ngOnInit(): void {
     this.CS.deleteAllCookies();
 
@@ -35,16 +36,19 @@ export class LoginComponent implements OnInit {
             this._router.navigate(['/home']);
           }
           if (decoded.role == "admin"){
-                console.log(decoded.role);
+            this.message="You are not allowed your role is admin"
              //   this._router.navigate(['/dashboard']);
                 //redirection dashbord
           }else {
                console.log("not admin");
+               this.message="You are not allowed your role is admin"
             //  this._router.navigate(['/ass/user']);
                 //redirection interface user
           }
      },
     error => {
+      this.err=true;
+      this.message="Sorry please check your credentials"
    console.log(error.error);
  // login failed, show error message
       }
