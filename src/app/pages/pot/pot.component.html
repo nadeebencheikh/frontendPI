@@ -22,7 +22,9 @@
       <button  (click)="myModal.show() " class="create-pot-btn">Create Pot</button>
         <div class="row">
             <div class="col-lg-8"  *ngFor="let item of  getVisiblePosts()">
+
                 <div class="single-blog-inner style-border">
+
                     <div class="thumb">
                       <img [src]="getImageSrc(item.image)" alt="image">
                     </div>
@@ -34,7 +36,8 @@
                         <h3 class="title">{{item.title}}
                         </h3>
                         <p>{{item.detail}}</p>
-
+                        <a href="" class="badge badge-danger" *ngIf="item.etat==='expired'">Expired</a>
+                        <a href="" class="badge badge-success" *ngIf="item.etat==='actif'">actif</a>
                     </div>
                 </div>
               </div>

@@ -78,7 +78,9 @@
                             <li><i class="fa fa-money"></i> Total Amount: <b>{{pot.currentAmount}} TND</b></li>
                             <li><i class="fa fa-users"></i>Number of Participants : <b>{{numpart}}</b> </li>
                             <li><i class="fa fa-calendar"></i>Goal Amount : <b>{{pot.goalAmount}} TND</b> </li>
-                            <li><i class="fa fa-hourglass-end"></i>left to collect : <b>{{pot.goalAmount - pot.currentAmount}} TND left</b></li>
+                            <li><i class="fa fa-hourglass-end"></i>left to collect : <b>{{pot.goalAmount - pot.currentAmount}} TND </b></li>
+                            <li><i class="fa fa-id-card"></i>Reference : <b>{{pot.reference}} </b></li>
+
                         </ul>
                     </div>
                   </div>
@@ -94,7 +96,7 @@
               <h4 class="widget-title">Recent Pots</h4>
               <ul style="display: flex; justify-content: space-between; padding-left: 0;">
                 <li  *ngFor="let item of fourpots  " style="margin-right: 10px;">
-                  <div class="single-blog-inner">
+                  <div class="single-blog-inner" *ngIf="item.etat==='actif'">
                     <div class="media ">
                       <img [src]="getImageSrc(item!.image)" alt="image">
                     </div>

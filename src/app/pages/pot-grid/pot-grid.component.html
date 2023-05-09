@@ -28,7 +28,8 @@
           </div>
         </div>
         <div *ngFor="let item of  getVisiblePosts()" class="col-lg-4 col-md-6">
-          <div class="single-blog-inner style-border">
+
+          <div class="single-blog-inner style-border" *ngIf="item.etat==='actif'">
             <div class="thumb">
               <img [src]="getImageSrc(item.image)" alt="image">
             </div>
