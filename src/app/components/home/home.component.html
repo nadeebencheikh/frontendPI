@@ -77,23 +77,21 @@
           <div class="section-title">
               <div class="row">
                   <div class="col-md-8 align-self-center">
-                      <h2 class="title mt-0">Top Featured Pots</h2>
+                      <h2 class="title mt-0">Top 10 Donators</h2>
                   </div>
-                  <div class="col-md-4 text-md-right mt-3 mt-md-0">
-                      <a class="btn btn-base mt-0" href="course.html">View All</a>
-                  </div>
+
               </div>
           </div>
           <div class="row">
-              <div class="col-lg-3 col-md-6">
+              <div  *ngFor="let item of  users" class="col-lg-3 col-md-6">
                   <div class="single-course-inner style-bottom-thumb">
                       <div class="details">
                           <div class="details-inner">
                               <div class="emt-user">
-                                  <span class="u-thumb"><img src="assets/img/author/3.png" alt="img"></span>
-                                  <span class="align-self-center">Timothy Willis</span>
+                                  <span class="u-thumb"><img src="assets/img/bg/uu.png" alt="img"></span>
+                                  <span class="align-self-center">{{item.login}}</span>
                               </div>
-                              <h6><a href="course-details.html">Praesent eu dolor eu orci vehicula euismod</a></h6>
+                              <h6><a href="course-details.html">{{item.email}}</a></h6>
                           </div>
                           <div class="emt-course-meta">
                               <div class="row">
@@ -110,99 +108,10 @@
                           </div>
                       </div>
                       <div class="thumb">
-                          <img src="assets/img/course/3.png" alt="img">
+                          <img src="assets/img/bg/users.png" alt="img">
                       </div>
                   </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                  <div class="single-course-inner style-bottom-thumb">
-                      <div class="details">
-                          <div class="details-inner">
-                              <div class="emt-user">
-                                  <span class="u-thumb"><img src="assets/img/author/6.png" alt="img"></span>
-                                  <span class="align-self-center">Randy Hart</span>
-                              </div>
-                              <h6><a href="course-details.html">Duis rhoncus dui venenatis consequat porttito</a></h6>
-                          </div>
-                          <div class="emt-course-meta">
-                              <div class="row">
-                                  <div class="col-6">
-                                      <div class="price">$74.00</div>
-                                  </div>
-                                  <div class="col-6">
-                                      <div class="rating text-right">
-                                          <i class="fa fa-star"></i> 4.9
-                                          <span>(73)</span>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="thumb">
-                          <img src="assets/img/course/6.png" alt="img">
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                  <div class="single-course-inner style-bottom-thumb">
-                      <div class="details">
-                          <div class="details-inner">
-                              <div class="emt-user">
-                                  <span class="u-thumb"><img src="assets/img/author/4.png" alt="img"></span>
-                                  <span class="align-self-center">Walter Griffin</span>
-                              </div>
-                              <h6><a href="course-details.html">Duis vestibulum elit vel neque pharetra vulputate</a>
-                              </h6>
-                          </div>
-                          <div class="emt-course-meta">
-                              <div class="row">
-                                  <div class="col-6">
-                                      <div class="price">$74.00</div>
-                                  </div>
-                                  <div class="col-6">
-                                      <div class="rating text-right">
-                                          <i class="fa fa-star"></i> 4.9
-                                          <span>(73)</span>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="thumb">
-                          <img src="assets/img/course/4.png" alt="img">
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                  <div class="single-course-inner style-bottom-thumb">
-                      <div class="details">
-                          <div class="details-inner">
-                              <div class="emt-user">
-                                  <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
-                                  <span class="align-self-center">Nancy Reyes</span>
-                              </div>
-                              <h6><a href="course-details.html">Fox nymphs grab quick-jived waltz. Brick quiz
-                                      whangs</a></h6>
-                          </div>
-                          <div class="emt-course-meta">
-                              <div class="row">
-                                  <div class="col-6">
-                                      <div class="price">$74.00</div>
-                                  </div>
-                                  <div class="col-6">
-                                      <div class="rating text-right">
-                                          <i class="fa fa-star"></i> 4.9
-                                          <span>(73)</span>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="thumb">
-                          <img src="assets/img/course/1.png" alt="img">
-                      </div>
-                  </div>
-              </div>
+
 
           </div>
       </div>

@@ -16,6 +16,15 @@ export class PotService {
           headers:new HttpHeaders({ authorization : 'Bearer '+token })
         })
   }
+  gettop10(token:any)
+  {
+
+
+    return this.http.get<any>(this.baseUrl+"/pot/retrieve-top10",
+        {
+          headers:new HttpHeaders({ authorization : 'Bearer '+token })
+        })
+  }
   getonepot(token:any,id:any)
   {
 
