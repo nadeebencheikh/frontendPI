@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+
 import {Product} from "../../Models/Product";
 import {User} from "../../Models/User";
 import {Category} from "../../Models/Category";
@@ -13,12 +14,16 @@ import {SubCategoryService} from "../../services/Category/SubCategory.service";
 import {ImageService} from "../../services/Image/Image.service";
 import {CategoryService} from "../../services/Category/Category.service";
 
+import { UserService } from 'src/app/services/user/user.service';
+
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
   products: Product[] = [];
   jwt!: string;
   currentProduct!: Product;
@@ -28,13 +33,15 @@ export class NavbarComponent implements OnInit {
   filteredSubCategories: SubCategory[] = [];
   id!: number;
   user : User = {idUser: 1, name: '', products : [] , favorite: {idFavoris:1 ,Subcategories: []}};
+ 
+ loggedin=false;
   constructor(private activatedRoute: ActivatedRoute, private _router: Router,
               private productService: ProductService,
               private formBuilder: FormBuilder,
               private SubCategoryService: SubCategoryService,
               private cs: CookiesService,
               private ImageService: ImageService,
-              private CategoryService: CategoryService){}
+              private CategoryService: CategoryService, private UserService: UserService){}
   public productToAdd: Product = {
     idProduct: 0,
     title: '',
@@ -48,10 +55,7 @@ export class NavbarComponent implements OnInit {
     ProductImages: [],
     commandes:[]
   }
-  ngOnInit(): void {
-    this.getAllCategories();
-    this.getAllSubCategories();
-  }
+ 
 
   getAllCategories() {
     this.CategoryService.GetAllCategories()
@@ -87,6 +91,16 @@ export class NavbarComponent implements OnInit {
             alert("Ajout Avec Succes")
             window.location.reload();
           }, 2000);
+
+ 
+
+  ngOnInit(): void {
+    this.getAllCategories();
+    this.getAllSubCategories();
+    //window.location.reload();
+    this.loggedin=this.UserService.isLoggedInUser();
+    console.log(this.loggedin+"--------------");
+
 
         },
         (error: HttpErrorResponse) => {
@@ -135,5 +149,9 @@ export class NavbarComponent implements OnInit {
       }
     }
   }
+profile(){
+  console.log("peeeeeeeeeee")
+  this._router.navigate(['/profile']);
 
+}
 }

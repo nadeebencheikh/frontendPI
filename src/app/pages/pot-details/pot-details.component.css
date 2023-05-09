@@ -1,0 +1,218 @@
+
+
+    /* Header */
+    .breadcrumb-area {
+      background-size: cover;
+      background-position: center center;
+      padding: 100px 0;
+    }
+
+    .breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .page-title {
+      color: #fff;
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .page-list {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-list li {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0 5px;
+    }
+
+    .page-list li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Pot Details */
+    .blog-area {
+      padding: 50px 0;
+    }
+
+    .blog-details-page-content {
+      margin-bottom: 50px;
+    }
+
+    .single-blog-inner {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 30px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .thumb {
+      margin-bottom: 20px;
+    }
+
+    .thumb img {
+      max-width: 100%;
+    }
+
+    .details {
+      line-height: 1.5;
+    }
+
+    .blog-meta {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .blog-meta li {
+      color: #999;
+      font-size: 14px;
+      font-weight: 400;
+      margin-right: 20px;
+    }
+
+    .blog-meta li i {
+      margin-right: 5px;
+    }
+
+    h3.title {
+      color: #333;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    blockquote {
+      color: #666;
+      font-size: 16px;
+      font-style: italic;
+      margin: 0 0 20px;
+      padding: 10px 20px;
+      border-left: 5px solid #f0ad4e;
+    }
+
+    button {
+      background-color: #fdc800;
+      color: #fff;
+      padding: 20px;
+      font-size: 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #f6c400;
+    }
+
+    /* Sidebar */
+    .td-sidebar {
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .widget-title {
+      color: #333;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    form.search-form {
+      margin-bottom: 20px;
+    }
+    .display-date {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    .display-time {
+      display: flex;
+      font-size: 2.5rem;
+      font-weight: bold;
+      border: 2px solid #ffd868;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: ease-in-out 0.1s;
+      transition-property: background, box-shadow, color;
+      -webkit-box-reflect: below 2px
+        linear-gradient(transparent, rgba(255, 255, 255, 0.05));
+    }
+
+    .display-time:hover {
+      background: #ffd868;
+      box-shadow: 0 0 30px#ffd868;
+      color: #272727;
+      cursor: pointer;
+    }
+    .single-blog-inner {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .thumb {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-weight: bold;
+
+    }
+
+    .thumb span {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .thumb .amount {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .thumb .participant {
+      font-size: 16px;
+    }
+
+    .thumb .jours {
+      font-size: 14px;
+      color: #999;
+    }
+
+    .thumb .reste {
+      font-size: 16px;
+      color: #ff0000;
+    }
+    button[type="button"] {
+      font-size: small;
+    }
+
+    button[type="submit"] {
+      font-size: small;
+    }
+    .fullscreen-message {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #cecbcbcc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      color: white;
+      text-align: center;
+    }
