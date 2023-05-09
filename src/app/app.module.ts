@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
+
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ResetmailComponent } from './pages/reset/resetmail/resetmail.component';
@@ -45,6 +47,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ClaimComponent,
     PotGridComponent,
     EventDetailComponent,
+    AddProductComponent,
     LoginComponent,
     SignupComponent,
     ResetmailComponent,

@@ -8,13 +8,13 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class ImageService {
 
-  baseUrl = "http://localhost:8085/backendPI"
+  baseUrl = "http://localhost:8085/image"
 
   constructor(private http: HttpClient,private sanitizer:DomSanitizer) {
   }
 
   public GetImageByIdProduct(productId: number){
-    return this.http.get( this.baseUrl+`/image/product/${productId}`)
+    return this.http.get( this.baseUrl+`/product/${productId}`)
   }
 
   public createImage(Image: any[]){
