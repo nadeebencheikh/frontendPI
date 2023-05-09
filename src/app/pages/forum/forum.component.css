@@ -1,0 +1,125 @@
+.comments-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .comments-count {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 2;
+  }
+  
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  
+  .comment-button,
+  .like-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 200;
+    background-color: #f0f2f5;
+    color: #3b3e43;
+    cursor: pointer;
+    width: 50%;
+    border: 1px  #ddd;
+    border-radius: 1px;
+    
+  }
+  
+  .comment-button:hover,
+  .like-button:hover {
+    background-color: #e3e6e9;
+  }
+  
+  .comment-form-container {
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .comment-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f0f2f5;
+    width: 100%;
+  }
+  
+  .comment-form input[type="text"] {
+    flex-grow: 1;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+  }
+  
+  .comment-form button[type="submit"] {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #afb6c5;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .comment-form button[type="submit"]:hover {
+    background-color: #2d4373;
+  }
+  .bg-gray {
+    background-color: #f0f2f5;
+  }
+  .fs-0 {
+    font-size: 4rem;
+  }
+  .fs-7 {
+    font-size: 0.8rem;
+  }  
+  .dropdown-toggle {
+    border-radius: 0;
+  }
+  
+  .dropdown-menu {
+    background-color: #fff;
+    border-radius: 0;
+    margin-top: -50px;
+  }
+  
+  .dropdown-item {
+    color: #333;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f7f7f7;
+    color: #333;
+  }
+  .reply-btn {
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  .reply-btn:hover {
+    text-decoration: underline;
+  }
+  .reply-btn i {
+    margin-right: 5px;
+  }

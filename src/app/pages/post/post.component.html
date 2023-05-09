@@ -1,0 +1,328 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <!-- breadcrumb start -->
+   <div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/m.jpg')">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <div class="section-title mb-0 text-center">
+                <h2 class="page-title">My Posts</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb end -->
+
+<div class="contact-list pd-top-120 pd-bottom-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="section-title mb-0">
+                    
+                    <h2 class="title">Create your Post</h2>
+                   
+                </div>
+            </div>
+            <div class="col-lg-8 mt-5 mt-lg-0" *ngIf="!update">
+                <form class="contact-form-inner  mt-5 mt-md-0"  (ngSubmit) = "onSubmit()">
+                    <div class="row">
+                        
+                        
+                        <div class="col-12">
+                            <div class="single-input-inner style-bg-border">
+                                <textarea placeholder="write your post here"  [(ngModel)] = "post.description" name = "description"></textarea>
+                            </div>
+                        </div>
+                        <!--
+                            <div class="form-group">
+                            <label> Image</label>
+                            <input type="file" class ="form-control" id = "imageHotel"
+                                [(ngModel)] = "hotel.imageHotel" name = "imageHotel" required>
+                                
+                
+                        </div>
+                    -->
+                        <div class="col-12">
+                            <button class="btn btn-base"  type ="submit">Post </button>
+                        </div>
+                        <label for="image">Upload File</label>
+                       <input type="file" class="form-control-file" id="image" name="image" (change)="onFileSelected($event)">
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-8 mt-5 mt-lg-0" *ngIf="update">
+                <form class="contact-form-inner  mt-5 mt-md-0"  (ngSubmit) = "onSubmitt()">
+                    <div class="row">
+                        
+                        
+                        <div class="col-12">
+                            <div class="single-input-inner style-bg-border">
+                                <textarea   [(ngModel)] = "postu.description" name = "description"></textarea>
+                            </div>
+                        </div>
+                        <!--
+                            <div class="form-group">
+                            <label> Image</label>
+                            <input type="file" class ="form-control" id = "imageHotel"
+                                [(ngModel)] = "hotel.imageHotel" name = "imageHotel" required>
+                                
+                
+                        </div>
+                    -->
+                        <div class="col-12">
+                            <button class="btn btn-base"  type ="submit">Post </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="blog-area pd-top-50 pd-bottom-120">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">   
+            <div class="single-blog-inner style-border" *ngFor = "let post of posts">
+              
+                <div class="details">
+                    <!-- author -->
+                    <div class="d-flex justify-content-between">
+                        <!-- avatar -->
+                        <div class="d-flex">
+                          <img
+                            src="https://source.unsplash.com/collection/happy-people"
+                            alt="avatar"
+                            class="rounded-circle me-2"
+                            style="width: 38px; height: 38px; object-fit: cover"
+                          />
+                          <div>
+                            <p class="m-1 fw-bold">John</p>
+                            <span class="text-muted fs-7">{{ post.createDateTime | date: 'MMM d, yyyy h:mm a'  }}</span>
+                          </div>
+                        </div>
+                        <!-- edit -->
+                        <i
+                          class="fa fa-bars" aria-hidden="true"
+                          type="button"
+                          id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        ></i>
+                        <!-- edit menu -->
+                        <ul
+                        class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"
+                      >
+                        <li class="d-flex align-items-center">
+                          <a
+                            class="
+                              dropdown-item
+                              d-flex
+                              justify-content-around
+                              align-items-center
+                              fs-7
+                            "
+                            href="#"
+                            (click)="updatePostt(post)"
+                            
+                          >
+                            Edit Post</a
+                          >
+                        </li>
+                        <li class="d-flex align-items-center">
+                          <a
+                            class="
+                              dropdown-item
+                              d-flex
+                              justify-content-around
+                              align-items-center
+                              fs-7
+                            "
+                            href="#"
+                            (click)="deletePost(post.idPost!)"
+                          >
+                            Delete Post</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- post content -->
+                    <div class="mt-3">
+                      <!-- content -->
+                      <div>
+                        <p>
+                            {{ post.description }}
+                        </p>
+                </div>
+                    
+                      <div class="thumb">
+                        <img 
+                        [src]="getImageSrc(post.image)"
+                        alt=""
+                        class="img-fluid rounded"
+                      />
+                      </div>
+                      <div class="comments-section">
+                        <p class="comments-count"> {{post.nbReaction}}Reactions</p>
+                      </div>
+                      <div class="buttons">
+                        <button class="comment-button" (click)="toggleCommentForm(post)">
+                          <i class="fa fa-comment" aria-hidden="true" ></i> Comment
+                        </button>
+                    <!---(click)="toggleLike(post)""-->
+                    
+                      <button  *ngIf="typo=='LIKE'" class="like-button" (click)="toggleReactions(post)" >
+                        <i class="fa fa-thumbs-up" aria-hidden="true" ></i>  {{typo}}
+                      </button>
+                      <button  *ngIf="typo=='DISLIKE'" class="like-button" (click)="toggleReactions(post)" >
+                        <i class="fa fa-thumbs-down" aria-hidden="true" ></i>  {{typo}}
+                      </button>
+                      <button  *ngIf="typo==' LOVE'" class="like-button" (click)="toggleReactions(post)" >
+                        <i class="fa fa-heart" aria-hidden="true" ></i>  {{typo}}
+                      </button>
+                      <button  *ngIf="typo=='HAHA'" class="like-button" (click)="toggleReactions(post)" >
+                        <i class="fa fa-smile-o" aria-hidden="true" ></i>  {{typo}}
+                      </button>
+
+                      <button *ngIf="typo==null" class="like-button" (click)="toggleReactions(post)" >
+                       
+                         React
+                      </button>
+
+                      <div class="reactions-container" *ngIf="t && idt===post.idPost">
+                        <div class="reaction-button like" (click)="addReaction(post, 'LIKE')">
+                          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                        </div>
+                        <div class="reaction-button like" (click)="addReaction(post, 'DISLIKE')">
+                          <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                        </div>
+                        <div class="reaction-button love" (click)="addReaction(post, ' LOVE')">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </div>
+                        <div class="reaction-button haha" (click)="addReaction(post, 'HAHA')">
+                          <i class="fa fa-smile-o" aria-hidden="true"></i>
+                        </div>
+                        
+                      </div>
+                   
+                        
+                        
+                          
+                      </div>
+    
+                      
+                      
+                    </div>
+                    
+                     <!-- likes & comments -->
+    
+                      
+                     
+                     
+    
+    
+    
+                      <div *ngFor="let comment of post.comments" >
+                        <div *ngIf="comment.parent == null" class="details" >
+                          <ul  class="blog-meta">
+                           
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="User Avatar" class="rounded-circle me-2"
+                            style="width: 38px; height: 38px; object-fit: cover"/>
+                            
+                              
+                                
+                                <li><p class="comment-username">John</p></li>
+                                <li> <span class="text-muted fs-7">{{ comment.date | date: 'MMM d, yyyy h:mm a'  }}</span></li> 
+                                <div class="ml-auto d-flex justify-content-end">
+                                    <button type="button" class="reply-btn"  (click)="deleteComment(comment.idComment!)">
+                                        <i class="fa fa-trash"></i> 
+                                    </button>
+                                    <button  type="button" class="reply-btn"  (click)=" updatecomment(comment,post)">
+                                        <i class="fa fa-pencil-square-o"></i> 
+                                    </button>
+                                </div>
+                                
+                                
+                          </ul>
+    
+                        
+                      
+                        <p *ngIf="!updatec || commentu.idComment!==comment.idComment " class="m-0 fs-7 bg-gray p-2 rounded">{{ comment.text }}  </p>
+
+                        <div class="comment-form-container"  *ngIf="updatec && commentu.idComment==comment.idComment" [hidden]="booli!==post.idPost">
+                            <form class="comment-form" (submit)="onSubmitcomment(post)">
+                              <img src="https://source.unsplash.com/collection/happy-people" alt="User Avatar" class="rounded-circle me-2"
+                              style="width: 38px; height: 38px; object-fit: cover"/>
+                              <input type="text" [(ngModel)]="commentu.text" name="commentText" >
+                              <button type="submit">Update</button>
+                            </form>
+                          </div>
+
+                       <div class="d-flex justify-content-end">
+                          <button type="button" class="reply-btn"  (click)=" toggleReplyForm(comment)">
+                            <i class="fa fa-reply"></i> Reply
+                          </button>
+                          <button type="button" class="reply-btn" (click)="toggleReplies(comment,post.idPost)" >
+                            <i class="fa fa-comments"></i> Replies</button>
+                        </div>
+                        
+                        <div *ngIf="comment.showReplies">
+                        <div  *ngFor="let commentt of comments"  >
+                        <div *ngIf="commentt.parent && commentt.parent.idComment === comment.idComment" class="row align-items-center" >
+                          <div class="col-auto">
+                            <img
+                            src="https://source.unsplash.com/collection/happy-people"
+                            class="rounded-circle me-1"
+                            alt="avatar"
+                            style="width: 38px; height: 38px; object-fit: cover"
+                          />
+                          </div>
+                        <div class="col">
+                          <p  class="m-1 fs-7 bg-gray p-2 rounded">{{ commentt.text }}</p>
+                        </div>
+                          
+                         
+                        </div>
+                      </div>
+                    </div>
+                          <div class="comment-form-container" [hidden]="!s || idd!==comment.idComment">
+                            <form class="comment-form" (submit)="addSubComment(subcomment, comment)" >
+                              <img src="https://source.unsplash.com/collection/happy-people" alt="User Avatar" class="rounded-circle me-2"
+                              style="width: 38px; height: 38px; object-fit: cover"/>
+                              <input type="text" [(ngModel)]="subcomment.text" name="subcomment" placeholder="Write your reply...">
+                              <button type="submit">reply</button>
+                            </form>
+                          </div>
+                        
+                        </div>                    
+    
+                      </div>
+    
+                      
+                      
+                      <div class="comment-form-container" [hidden]="!p || idc!==post.idPost">
+                        <form class="comment-form" (submit)="addComment(post)">
+                          <img src="https://source.unsplash.com/collection/happy-people" alt="User Avatar" class="rounded-circle me-2"
+                          style="width: 38px; height: 38px; object-fit: cover"/>
+                          <input type="text" [(ngModel)]="comment.text" name="commentText" placeholder="Write a comment...">
+                          <button type="submit">Post</button>
+                        </form>
+                      </div>
+                    </div>
+                    
+                
+              </div>
+           
+          
+        </div>
+      </div>
+      
+    </div>
+    </div>
+    
+
+
+
+    

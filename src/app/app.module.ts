@@ -29,7 +29,11 @@ import { ResetmailComponent } from './pages/reset/resetmail/resetmail.component'
 import { ResetpassComponent } from './pages/reset/resetpass/resetpass.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CookieService } from 'ngx-cookie-service';
+
 import { ProfileComponent } from './pages/profile/profile.component';
+import { PostComponent } from './pages/post/post.component';
+import { ForumComponent } from './pages/forum/forum.component';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +56,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
     SignupComponent,
     ResetmailComponent,
     ResetpassComponent,
+    PostComponent,
+    ForumComponent,
     ProfileComponent,
+
 
   ],
   imports: [
