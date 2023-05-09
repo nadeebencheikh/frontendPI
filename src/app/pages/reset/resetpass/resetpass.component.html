@@ -1,1 +1,68 @@
-<p>resetpass works!</p>
+   <!-- breadcrumb start -->
+   <div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/3.png')">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <div class="section-title mb-0 text-center">
+                <h2 class="page-title">Reset Password</h2>
+                <ul class="page-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Reset Password</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb end -->
+
+
+  <!-- signin-page-Start -->
+  <div class="signin-page-area pd-top-120 pd-bottom-120">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-7">
+                <form class="signin-inner"    [formGroup]="passwordchange" (ngSubmit)="reset()">
+                  <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4 text"><strong>New Password</strong></div>
+                    <br>
+                    <div class="col-4"></div>
+                  </div>
+                    <div class="row">
+
+
+                      <div class="col-12">
+                        <div class="single-input-inner style-bg-border">
+                            <input [type]="type_input ? 'text' : 'password'" placeholder="Password" formControlName="password"    [ngClass]="{'input-f':(password!.touched ||password!.errors)  && password!.errors,
+                            'input-true':conpassword!.touched && password!.valid }">
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="col-12">
+                      <div class="single-input-inner style-bg-border">
+                          <input [type]="type_input2 ? 'text' : 'password'" placeholder="Confirm Password" formControlName="passwordConfirmer"    [ngClass]="{'input-f':(conpassword!.touched ||conpassword!.errors)  && conpassword!.errors,
+                          'input-true':conpassword!.touched && conpassword!.valid }">
+                          <span class="ii" (click)="changeInput2()"> show password </span>
+                      </div>
+                      <br><span class="sp" *ngIf="showsp">Your password has been changed</span>
+                      <br> <span class="sp2" *ngIf="err">** Sorry your link has expired thanks for retrying</span>
+                      <br> <span class="sp2" *ngIf="passwordchange.invalid">** Password must be greater than 8 characters</span>
+                  </div>
+
+                        <div class="col-12 mb-4">
+                            <button  type="submit" class="btn btn-base w-100" [disabled]="passwordchange.invalid">Change password</button>
+                        </div>
+
+                        <div class="col-12">
+                            <a [routerLink]="['/login']"><strong>Login</strong></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- signin-page-end -->
