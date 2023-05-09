@@ -24,8 +24,8 @@
               </div>
             </div>
             <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert-danger">
-              <div *ngIf="title.errors?.['required']">Le titre est obligatoire</div></div>
-              <div *ngIf="title.errors?.['minLength'] || title.errors?.['maxLength']">Le titre doit être  entre 1 et 50 carac</div>
+              <div *ngIf="title.errors?.['required']">Le titre est obligatoire</div>
+              <div *ngIf="title.errors?.['minLength'] || title.errors?.['maxLength']">Le titre doit être  entre 1 et 50 caractere</div></div>
             <div class="col-lg-6">
               <div class="single-input-inner style-bg-border">
                 <input name="reference" type="text" placeholder="Reference" [(ngModel)]="productToAdd.reference" #reference="ngModel" required minlength="3" maxlength="50">
