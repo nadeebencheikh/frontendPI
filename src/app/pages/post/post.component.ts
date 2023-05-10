@@ -68,7 +68,7 @@ export class PostComponent {
         }
         private getPosts(){
 
-          this.postService.getPostsList().subscribe(data => {
+          this.postService.getPostsByUser(this.idUser!).subscribe(data => {
             this.posts = data;
           console.log(this.posts)
           });
@@ -252,7 +252,7 @@ if (this.updatec==false){
 
           this.showReactions = !this.showReactions;
           console.log(this.typo)
-          this.reactionService.addReact(post.idPost!,this.typo)
+          this.reactionService.addReact(post.idPost!,this.typo,this.idUser!)
             .subscribe(data=> {
               console.log(data);
               console.log(type)
@@ -263,7 +263,7 @@ if (this.updatec==false){
 
               console.log(post.idPost);
 
-              this.reactionService.deleteReact(post.idPost!).subscribe( data => {
+              this.reactionService.deleteReact(post.idPost!,this.idUser!).subscribe( data => {
                 console.log(data);
                 this.showReactions = !this.showReactions;
 
