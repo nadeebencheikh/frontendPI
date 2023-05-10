@@ -15,10 +15,10 @@ import { ReactionService } from 'src/app/services/reactions/reaction.service';
 })
 export class PostComponent {
         post: Post = new Post();
-        
-        posts?: Post[]; 
+
+        posts?: Post[];
         postt?:Post;
-        
+
         subcomment: Comment=new Comment;
         updatec?:boolean;
         p?:boolean;
@@ -28,7 +28,7 @@ export class PostComponent {
         a?:boolean;
         t=false;
         idt:any;
-        
+
         selectedfile:any;
         idd?: number;
         idc?: number;
@@ -43,101 +43,101 @@ export class PostComponent {
         commentText = '';
         id?:number;
         showReactions = false;
-       
+
         idUser?:number
         jwt?:string
-        
-      
-         
-      
-        
-      
+
+
+
+
+
+
         constructor(private postService: PostService  , private commentService: CommentService, private reactionService:ReactionService,
-          private router: Router,  private cs:CookiesService) { 
+          private router: Router,  private cs:CookiesService) {
 
             this.jwt=this.cs.getCookieJWT().toString();
             this.idUser=this.cs.getCookieIDUser();
           }
-      
+
          ngOnInit(): void {
           this.postService.auth(this.jwt!);
-          
+
           this.update=false;
           this.updatec=false;
           this.getPosts();
         }
         private getPosts(){
-       
+
           this.postService.getPostsList().subscribe(data => {
             this.posts = data;
           console.log(this.posts)
           });
-        
+
         }
-      
+
         updateEvent(id: number){
           this.router.navigate(['update-event', id]);
         }
-      
+
         deleteEvent(id: number){
           this.postService.deletePost(id).subscribe( data => {
             console.log(data);
             this.getPosts();
           })
         }
-      
+
         toggleCommentForm(post : any) {
           this.idc=post.idPost;
          this.p = post.showCommentForm = !post.showCommentForm;
         }
-      
+
         toggleReplyForm(comment : any) {
           this.idd=comment.idComment;
           this.z = 1==1 ;
         this.s =  comment.showReplyForm = !comment.showReplyForm;
         }
-        
-      
+
+
          addComment(post : any) {
-          
+
             if (this.comment.text?.trim() != ''){
-            
+
               console.log(this.comment.text);
-              this.commentService.createComment(this.comment, post.idPost).subscribe( data =>{
+              this.commentService.createComment(this.comment, post.idPost,this.idUser!).subscribe( data =>{
                 console.log(data);
                 },
               error => console.log(error));
             }
-            
-            
+
+
             // sleep for 1 second
-            window.location.reload();
-            
+           // window.location.reload();
+
             this.toggleCommentForm(post);
-            
-        } 
-        
+
+        }
+
         addSubComment(subcomment: Comment, parentComment: Comment) {
           if (subcomment.text?.trim() != '') {
-            this.commentService.addSubComment(subcomment.text!, parentComment.idComment!).subscribe(subComment => {
+            this.commentService.addSubComment(subcomment.text!, parentComment.idComment!,this.idUser!).subscribe(subComment => {
               parentComment.replies?.push(subComment);
             });
           }
           // sleep for 1 second
-          window.location.reload();
+         // window.location.reload();
           this.toggleReplyForm(parentComment);
         }
-        
+
         toggleReplies(comment: Comment, id:any) {
-          
+
           comment.showReplies = !comment.showReplies;
           console.log(id)
-          
+
             this.commentService.getCommentsByPost(id).subscribe(data => {
               this.comments= data;
             });
-          
-          
+
+
         }
         updatePostt(post:Post){
 
@@ -151,12 +151,12 @@ export class PostComponent {
         updatecomment(comment:Comment,post:any){
 if (this.updatec==false){
           this.booli=post.idPost;
-        
+
           this.commentu = comment;
           console.log(comment.post?.idPost);
           console.log("hedha",post.idPost);
           console.log(this.commentu.text);
-        
+
           console.log(comment.post?.idPost);
           this.updatec=true;}
           else {
@@ -165,23 +165,23 @@ if (this.updatec==false){
 
 
         }
-              
+
         onSubmitcomment(post:any){
           this.commentService.updateComment(this.commentu,post.idPost).subscribe( data =>{
             console.log(data);
             this.update=false;
-         
+
             // sleep for 1 second
             window.location.reload();
-            
-            
+
+
           },
           error => console.log(error));
         }
-           
-          
-        
-      
+
+
+
+
         savePost(){
           const formData: FormData = new FormData();
           formData.append('image', this.selectedfile, this.selectedfile.name);
@@ -198,16 +198,16 @@ if (this.updatec==false){
           console.log(image)
           return 'data:'+ image.contentType+';base64,' + image.bytes;
          }
-      
-       
-       
-      
+
+
+
+
         goToPostList(){
           //this.router.navigate(['/post']);
           window.location.reload();
         }
-      
-      
+
+
         onSubmit(){
           console.log(this.post);
           this.savePost();
@@ -226,7 +226,7 @@ if (this.updatec==false){
           this.postService.deletePost(id).subscribe( data => {
             console.log(data);
             this.getPosts();
-          
+
           })}
         }
         deleteComment(id: number){
@@ -234,49 +234,49 @@ if (this.updatec==false){
           this.commentService.deleteComment(id).subscribe( data => {
             console.log(data);
             this.getPosts();
-          
+
           })}
         }
 
         toggleReactions(post :any) {
-          
+
         this.t =  post.showReactions = !post.showReactions;
         this.idt=post.idPost;
          console.log(this.showReactions)
 
         }
-      
+
         addReaction(post: Post, type: string) {
           if(this.typo==null || this.typo!=type){
           this.typo=type;
-        
+
           this.showReactions = !this.showReactions;
           console.log(this.typo)
           this.reactionService.addReact(post.idPost!,this.typo)
             .subscribe(data=> {
               console.log(data);
               console.log(type)
-              
+
             });}
             else if(this.typo==type) {
               this.typo=null;
-            
+
               console.log(post.idPost);
 
               this.reactionService.deleteReact(post.idPost!).subscribe( data => {
                 console.log(data);
                 this.showReactions = !this.showReactions;
-                
-              
+
+
               })
-              
-              
-            
+
+
+
             }
 
-            
+
         }
-        
+
         onFileSelected(event:any) {
           this.selectedfile=  event.target.files[0];
         }

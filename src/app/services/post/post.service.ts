@@ -12,11 +12,11 @@ export class PostService {
 .set('Content-Type', 'application/json; charset=utf-8')
 .set('Accept', 'application/json')
 .set('authorization','Bearer '+this.jwt)
- 
+
 
 tokenn = new HttpHeaders()
 .set('authorization',this.jwt)
- 
+
   private baseURL = "http://localhost:8085/post";
 
   constructor(private httpClient: HttpClient) { }
@@ -26,8 +26,10 @@ tokenn = new HttpHeaders()
 
   }
   getPostsList(): Observable<Post[]>{
-    
-    return this.httpClient.get<Post[]>(`${this.baseURL}/retrieve-all-posts`);
+
+    return this.httpClient.get<Post[]>(`${this.baseURL}/retrieve-all-posts`, {
+      headers:new HttpHeaders({ authorization : this.jwt})
+    });
   }
 
   createPost(post: any,id :number): Observable<Object>{
@@ -37,15 +39,21 @@ tokenn = new HttpHeaders()
   }
 
   getPostById(id: any): Observable<Post>{
-    return this.httpClient.get<Post>(`${this.baseURL}/retrieve-post/${id}`, {headers:this.token});
+    return this.httpClient.get<Post>(`${this.baseURL}/retrieve-post/${id}`, {
+      headers:new HttpHeaders({ authorization : this.jwt})
+    });
   }
 
   updatePost( post:Post): Observable<Object>{
-    return this.httpClient.put(`${this.baseURL}/update-post`, post, {headers:this.token});
+    return this.httpClient.put(`${this.baseURL}/update-post`, post, {
+      headers:new HttpHeaders({ authorization : this.jwt})
+    });
   }
 
   deletePost(id: number): Observable<Object>{
-    return this.httpClient.delete(`${this.baseURL}/remove-post/${id}`, {headers:this.token});
-    
+    return this.httpClient.delete(`${this.baseURL}/remove-post/${id}`, {
+      headers:new HttpHeaders({ authorization : this.jwt})
+    });
+
   }
 }
