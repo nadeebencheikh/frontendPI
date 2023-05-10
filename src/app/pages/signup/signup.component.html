@@ -1,1 +1,78 @@
-<p>signup works!</p>
+   <!-- breadcrumb start -->
+   <div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/users.png')">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <div class="section-title mb-0 text-center">
+                <h2 class="page-title">Sign Up</h2>
+                <ul class="page-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Sign Up</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb end -->
+
+
+  <!-- signin-page-Start -->
+  <div class="signin-page-area pd-top-120 pd-bottom-120">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-7">
+                <form class="signin-inner"    [formGroup]="signupForm" (ngSubmit)="signup()">
+                  <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4 text"><strong>Sign In</strong></div>
+                    <div class="col-4"></div>
+                  </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="single-input-inner style-bg-border">
+                            <input type="text" placeholder="Name" formControlName="name">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="single-input-inner style-bg-border">
+                          <input type="text" placeholder="Lastname" formControlName="lastname">
+                      </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="single-input-inner style-bg-border">
+                        <input type="text" placeholder="Login" formControlName="login">
+                    </div>
+                </div>
+                <div class="col-12">
+                  <div class="single-input-inner style-bg-border">
+                      <input type="email" placeholder="Email" formControlName="email">
+                  </div>
+              </div>
+
+                        <div class="col-12">
+                            <div class="single-input-inner style-bg-border">
+                                <input type="phone" placeholder="phone" formControlName="phone">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="single-input-inner style-bg-border">
+                                <input type="text" placeholder="Password" formControlName="password">
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4">
+                            <button  type="submit" class="btn btn-base w-100" [disabled]="signupForm.invalid">Sign In</button>
+                        </div>
+
+                        <div class="col-12">
+                            <a [routerLink]="['/login']"><strong>Login</strong></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- signin-page-end -->

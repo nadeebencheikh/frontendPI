@@ -16,6 +16,24 @@ export class PotService {
           headers:new HttpHeaders({ authorization : 'Bearer '+token })
         })
   }
+  gettop10(token:any)
+  {
+
+
+    return this.http.get<any>(this.baseUrl+"/pot/retrieve-top10",
+        {
+          headers:new HttpHeaders({ authorization : 'Bearer '+token })
+        })
+  }
+  getonepot(token:any,id:any)
+  {
+
+
+    return this.http.get<any>(this.baseUrl+"/pot/retrieve-one-pot/"+id,
+        {
+          headers:new HttpHeaders({ authorization : 'Bearer '+token })
+        })
+  }
 
   addpot(data:any, token:any)
   {
@@ -49,6 +67,34 @@ export class PotService {
 
       )
     })
+  }
+  addpart(data:any, token:any)
+  {
+
+    return this.http.post<any>(this.baseUrl+"/potparticipation/add-potparticipation",data,
+          {
+            headers:new HttpHeaders({
+              'authorization' : 'Bearer '+token,
+              'Content-Type': 'application/json',
+            }
+
+            )
+          }
+    )
+  }
+  numpart(data:any, token:any)
+  {
+
+    return this.http.post<any>(this.baseUrl+"/potparticipation/retrieve-num-part",data,
+          {
+            headers:new HttpHeaders({
+              'authorization' : 'Bearer '+token,
+              'Content-Type': 'application/json'
+            }
+
+            )
+          }
+    )
   }
 
 }

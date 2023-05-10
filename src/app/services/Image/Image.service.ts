@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient,HttpHeaders} from "@angular/common/http";
 //import {Image} from "../../Models/Image";
 import {DomSanitizer} from "@angular/platform-browser";
 
@@ -13,8 +13,10 @@ export class ImageService {
   constructor(private http: HttpClient,private sanitizer:DomSanitizer) {
   }
 
-  public GetImageByIdProduct(productId: number){
-    return this.http.get( this.baseUrl+`/product/${productId}`)
+  public GetImageByIdProduct(productId: number, token : any){
+    return this.http.get( this.baseUrl+`/product/${productId}`,{
+      headers:new HttpHeaders({ authorization : 'Bearer '+token })
+    })
   }
 
   public createImage(Image: any[]){
