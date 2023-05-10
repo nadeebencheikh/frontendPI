@@ -33,6 +33,7 @@ const routes: Routes = [
   { path:'change_password',  component: ResetpassComponent },
   { path:'signup',  component: SignupComponent },
 
+
  
   { path:'potdetail/:idPot',  component: PotDetailsComponent,  canActivate : [AuthGuard]},
  
@@ -46,12 +47,13 @@ const routes: Routes = [
   { path:'pot',  component: PotComponent ,  canActivate : [AuthGuard]},
   { path:'potgrid',  component: PotGridComponent,  canActivate : [AuthGuard] },
   { path:'event',  component: EventComponent,  canActivate : [AuthGuard] },
-  { path:'eventdetail',  component: EventDetailComponent},
+  { path:'eventdetail/:id',  component: EventDetailComponent},
 
   { path:'product',  component: ProductsComponent ,  canActivate : [AuthGuard]},
      { path:'productdetail/:id',  component: ProductsDetailsComponent,  canActivate : [AuthGuard] },
   { path:'post',  component: PostComponent },
   { path:'forum',  component: ForumComponent },
+
 
 
   {
