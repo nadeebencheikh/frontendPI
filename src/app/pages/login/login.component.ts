@@ -31,7 +31,11 @@ message="";
           var decoded = jwt_decode(res.jwt) as any ;
           this.CS.setCookieId(decoded.id);
           this.CS.setCookieCostom("role",decoded.role);
-          if (decoded.role == "user"){
+
+          console.log(res);
+          this.ls.getoneuser(res.jwt,decoded.id).subscribe(res=>{
+            let statue= res.status;
+          if (decoded.role == "user" && (statue == 1 ||statue == 3)){
             console.log(this.CS.getCookieIDUser());
             this._router.navigate(['/home']);
           }
@@ -39,12 +43,20 @@ message="";
             this.message="You are not allowed your role is admin"
              //   this._router.navigate(['/dashboard']);
                 //redirection dashbord
-          }else {
+          }else if ( statue==0) {
+            this.err=true;
+            this.message="Sorry Your account is blocked "
+             //
+                //redirection interface user
+          }
+
+
+          else {
                console.log("not admin");
                this.message="You are not allowed your role is admin"
             //  this._router.navigate(['/ass/user']);
                 //redirection interface user
-          }
+          }})
      },
     error => {
       this.err=true;

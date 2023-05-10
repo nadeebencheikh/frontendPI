@@ -77,6 +77,16 @@ export class PotComponent implements OnInit {
 
     })
 }
+deletepot(id:any) {
+
+  console.log(id);
+
+  this.potService.deletepot(id,this.jwt).subscribe(res=>{
+      console.log(res);
+      window.location.reload();
+
+  })
+}
 
 onFileSelected(event:any) {
   this.selectedfile=  event.target.files[0];

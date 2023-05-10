@@ -1,10 +1,10 @@
  <!-- breadcrumb start -->
- <div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/m.jpg')">
+ <div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/pp.png')">
     <div class="container">
         <div class="breadcrumb-inner">
             <div class="section-title mb-0 text-center">
                 <h2 class="page-title">Forum</h2>
-                
+
             </div>
         </div>
     </div>
@@ -15,9 +15,9 @@
 <div class="blog-area pd-top-120 pd-bottom-120">
 <div class="container">
   <div class="row">
-    <div class="col-lg-8">   
+    <div class="col-lg-8">
         <div class="single-blog-inner style-border" *ngFor = "let post of posts">
-          
+
             <div class="details">
                 <!-- author -->
                 <div class="d-flex justify-content-between">
@@ -34,8 +34,8 @@
                         <span class="text-muted fs-7">{{ post.createDateTime | date: 'MMM d, yyyy h:mm a'  }}</span>
                       </div>
                     </div>
-                    
-                   
+
+
                 </div>
                 <!-- post content -->
                 <div class="mt-3">
@@ -45,7 +45,7 @@
                         {{ post.description }}
                     </p>
             </div>
-                
+
                   <div class="thumb">
                     <img
                     [src]="getImageSrc(post.image)"
@@ -75,7 +75,7 @@
                 </button>
 
                 <button *ngIf="typo==null" class="like-button" (click)="toggleReactions(post)" >
-                 
+
                    React
                 </button>
 
@@ -92,42 +92,42 @@
                   <div class="reaction-button haha" (click)="addReaction(post, 'HAHA')">
                     <i class="fa fa-smile-o" aria-hidden="true"></i>
                   </div>
-                  
+
                 </div>
                   </div>
 
-                  
-                  
+
+
                 </div>
-                
+
                  <!-- likes & comments -->
 
-                  
-                 
-                 
+
+
+
 
 
 
                   <div *ngFor="let comment of post.comments" >
                     <div *ngIf="comment.parent == null" class="details" >
                       <ul  class="blog-meta">
-                       
+
                         <img src="https://source.unsplash.com/collection/happy-people" alt="User Avatar" class="rounded-circle me-2"
                         style="width: 38px; height: 38px; object-fit: cover"/>
-                        
-                          
-                            
+
+
+
                             <li><p class="comment-username">John</p></li>
-                            <li> <span class="text-muted fs-7">{{ comment.date | date: 'MMM d, yyyy h:mm a'  }}</span></li> 
+                            <li> <span class="text-muted fs-7">{{ comment.date | date: 'MMM d, yyyy h:mm a'  }}</span></li>
                             <div class="ml-auto d-flex justify-content-end">
                               <button type="button" class="reply-btn"  (click)="deleteComment(comment.idComment!)">
-                                  <i class="fa fa-trash"></i> 
+                                  <i class="fa fa-trash"></i>
                               </button>
                               <button  type="button" class="reply-btn"  (click)=" updatecomment(comment,post)">
-                                  <i class="fa fa-pencil-square-o"></i> 
+                                  <i class="fa fa-pencil-square-o"></i>
                               </button>
                           </div>
-                            
+
                       </ul>
                       <p *ngIf="!updatec || commentu.idComment!==comment.idComment " class="m-0 fs-7 bg-gray p-2 rounded">{{ comment.text }}  </p>
 
@@ -140,8 +140,8 @@
                           </form>
                         </div>
 
-                    
-                  
+
+
                     <p class="m-0 fs-7 bg-gray p-2 rounded">{{ comment.text }}  </p>
                    <div class="d-flex justify-content-end">
                       <button type="button" class="reply-btn"  (click)=" toggleReplyForm(comment)">
@@ -150,7 +150,7 @@
                       <button type="button" class="reply-btn" (click)="toggleReplies(comment,post.idPost)" >
                         <i class="fa fa-comments"></i> Replies</button>
                     </div>
-                    
+
                     <div *ngIf="comment.showReplies">
                     <div  *ngFor="let commentt of comments"  >
                     <div *ngIf="commentt.parent && commentt.parent.idComment === comment.idComment" class="row align-items-center" >
@@ -165,8 +165,8 @@
                     <div class="col">
                       <p  class="m-1 fs-7 bg-gray p-2 rounded">{{ commentt.text }}</p>
                     </div>
-                      
-                     
+
+
                     </div>
                   </div>
                 </div>
@@ -178,13 +178,13 @@
                           <button type="submit">reply</button>
                         </form>
                       </div>
-                    
-                    </div>                    
+
+                    </div>
 
                   </div>
 
-                  
-                  
+
+
                   <div class="comment-form-container" [hidden]="!p || idc!==post.idPost">
                     <form class="comment-form" (submit)="addComment(post)">
                       <img src="https://source.unsplash.com/collection/happy-people" alt="User Avatar" class="rounded-circle me-2"
@@ -194,13 +194,13 @@
                     </form>
                   </div>
                 </div>
-                
-            
+
+
           </div>
-       
-      
+
+
     </div>
   </div>
-  
+
 </div>
 </div>

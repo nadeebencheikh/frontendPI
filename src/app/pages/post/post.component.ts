@@ -214,9 +214,10 @@ if (this.updatec==false){
         }
         onSubmitt(){
           this.postService.updatePost(this.postu).subscribe( data =>{
+            console.log(this.postu);
             console.log(data);
             this.update=false;
-            this.goToPostList();
+           // this.goToPostList();
           },
           error => console.log(error));
         }

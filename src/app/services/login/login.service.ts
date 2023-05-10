@@ -8,7 +8,13 @@ export class LoginService {
   baseUrl="http://127.0.0.1:8085"
   constructor(private http:HttpClient) {
   }
-
+  getoneuser(token:any,id:any)
+  {
+    return this.http.get<any>(this.baseUrl+"/user/get-user/"+id,
+        {
+          headers:new HttpHeaders({ authorization : 'Bearer '+token })
+        })
+  }
   login(data:any)
   {
     return this.http.post<any>(this.baseUrl+"/user/authentificate",JSON.stringify(data),{

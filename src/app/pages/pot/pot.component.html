@@ -38,6 +38,8 @@
                         <p>{{item.detail}}</p>
                         <a href="" class="badge badge-danger" *ngIf="item.etat==='expired'">Expired</a>
                         <a href="" class="badge badge-success" *ngIf="item.etat==='actif'">actif</a>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deletepot(item.idPot)">Delete</button>
+
                     </div>
                 </div>
               </div>
