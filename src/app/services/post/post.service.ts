@@ -32,6 +32,13 @@ tokenn = new HttpHeaders()
     });
   }
 
+  getPostsByUser(id :number): Observable<Post[]>{
+    return this.httpClient.get<Post[]>(`${this.baseURL}/retrieve-post/${id}`,{
+      headers:new HttpHeaders({ authorization : this.jwt})
+    });
+
+  }
+
   createPost(post: any,id :number): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}/add/image/${id}`, post , {
       headers:new HttpHeaders({ authorization : this.jwt})

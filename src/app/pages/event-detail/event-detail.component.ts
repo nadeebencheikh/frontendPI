@@ -17,9 +17,9 @@ export class EventDetailComponent implements OnInit {
   checkk ?: boolean
   iduser? : number
   jwt : string;
-  
-  
-  constructor(private route: ActivatedRoute, private eventService: EventService, private router: Router,private cs:CookiesService) { 
+
+
+  constructor(private route: ActivatedRoute, private eventService: EventService, private router: Router,private cs:CookiesService) {
     this.jwt=this.cs.getCookieJWT().toString();
       this.iduser=this.cs.getCookieIDUser();
   }
@@ -27,17 +27,18 @@ export class EventDetailComponent implements OnInit {
     this.eventService.auth(this.jwt);
     this.id = this.route.snapshot.params['id'];
 //-------------------------
-   
+
     this.eventService.check(this.iduser, this.id).subscribe(result => {
       if (result === 0) {
         this.checkk=true;
-        
-        
+
+        console.log(this.checkk);
         // perform some action if check returns 0
       } else {
-       
+
         // perform some other action if check returns a value other than 0
         this.checkk=false;
+        console.log(this.checkk);
       }
     });
     //-----------------------------------------------------
@@ -53,7 +54,7 @@ export class EventDetailComponent implements OnInit {
     const id2=1;
     this.eventService.participerEvenement(id2,id);
     console.log(id);
-   
+
     this.router.navigate(['event']);
   }*/
 
@@ -69,14 +70,14 @@ export class EventDetailComponent implements OnInit {
     }, error => {
       console.log('Error:', error);
     });
-  
+
     this.router.navigate(['event']);
   }*/
 
   participer(id?: number) {
-   
-   
-    
+
+
+
     this.eventService.check(this.iduser, id).subscribe(result => {
       if (result === 0) {
         this.checkk=true;
@@ -85,7 +86,7 @@ export class EventDetailComponent implements OnInit {
         }, error => {
           console.log('Error:', error);
         });
-        
+
         // perform some action if check returns 0
       } else {
         alert("you have already participated to this event")
@@ -100,7 +101,7 @@ export class EventDetailComponent implements OnInit {
     console.log(image)
     return 'data:'+ image.contentType+';base64,' + image.bytes;
    }
-  
+
   downloadPdf(data: any) {
     const file = new Blob([data], { type: 'application/pdf' });
     const fileURL = URL.createObjectURL(file);
@@ -114,8 +115,8 @@ export class EventDetailComponent implements OnInit {
   }
 
   annuler(id?: number) {
-    
-    
+
+
     this.eventService.check(this.iduser, id).subscribe(
       result => {
         if (result === 0) {
@@ -139,10 +140,10 @@ export class EventDetailComponent implements OnInit {
         console.error(error); // log any errors to the console
       }
     );
-    
+
     this.router.navigate(['event']);
 }
-  
-  
-     
+
+
+
 }

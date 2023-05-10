@@ -148,7 +148,7 @@ export class ForumComponent {
 
       this.showReactions = !this.showReactions;
       console.log(this.typo)
-      this.reactionService.addReact(post.idPost!,this.typo)
+      this.reactionService.addReact(post.idPost!,this.typo,this.idUser!)
         .subscribe(data=> {
           console.log(data);
           console.log(type)
@@ -159,7 +159,7 @@ export class ForumComponent {
 
           console.log(post.idPost);
 
-          this.reactionService.deleteReact(post.idPost!).subscribe( data => {
+          this.reactionService.deleteReact(post.idPost!,this.idUser!).subscribe( data => {
             console.log(data);
             this.showReactions = !this.showReactions;
 
