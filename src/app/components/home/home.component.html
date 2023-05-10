@@ -1,0 +1,261 @@
+
+    <!-- banner start -->
+    <div class="banner-area banner-area-3 bg-black">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-5 col-md-10">
+                  <div class="thumb b-animate-thumb">
+                      <img src="assets/img/banner/3.png" alt="img">
+                  </div>
+              </div>
+              <div class="col-lg-7 align-self-center mt-5 mt-lg-0">
+                  <div class="banner-inner style-white text-center text-lg-left">
+
+                      <i class="b-animate-2 title">"Here, you can discover the best solutions for finding free items, making donations, and creating your own donation fund."</i>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- banner end -->
+
+
+
+  <!-- about area start -->
+  <div class="about-area pd-top-120">
+      <div class="container">
+          <div class="about-area-inner">
+              <div class="row">
+                  <div class="col-lg-6 col-md-10">
+                      <div class="about-thumb-wrap style-two"
+                          style="background-image: url('assets/img/banner/p.png');">
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <div class="about-inner-wrap">
+                          <div class="section-title mb-0">
+                              <h6 class="sub-title style-btn">ABOUT US</h6>
+                              <h2 class="title">100+ Free products to discover</h2>
+                              <p class="content">By avoiding unnecessary waste, we can help make the world a better place, even if others continue to discard useful items.</p>
+                              <ul class="single-list-wrap">
+                                  <li class="single-list-inner style-box-2">
+                                      <div class="media">
+                                          <div class="media-left">
+                                              <img src="assets/img/icon/23.png" alt="img">
+                                          </div>
+                                          <div class="media-body align-self-center">
+                                              <h5 class="mb-2">Product Reporting</h5>
+                                              <p>If you encounter an issue with a product, you may be able to make a claim to report the problem.</p>
+                                          </div>
+                                      </div>
+                                  </li>
+                                  <li class="single-list-inner style-box-2">
+                                      <div class="media">
+                                          <div class="media-left">
+                                              <img src="assets/img/icon/24.png" alt="img">
+                                          </div>
+                                          <div class="media-body align-self-center">
+                                              <h5 class="mb-2">Events</h5>
+                                              <p>There are regular events that you can participate in and stay updated on to keep informed and engaged.</p>
+                                          </div>
+                                      </div>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- about area end -->
+
+  <!-- course area start -->
+  <div class="course-area pd-top-110 pd-bottom-90">
+      <div class="container">
+          <div class="section-title">
+              <div class="row">
+                  <div class="col-md-8 align-self-center">
+                      <h2 class="title mt-0">Top 10 Donators</h2>
+                  </div>
+
+              </div>
+          </div>
+          <div class="row">
+              <div  *ngFor="let item of  users" class="col-lg-3 col-md-6">
+                  <div class="single-course-inner style-bottom-thumb">
+                      <div class="details">
+                          <div class="details-inner">
+                              <div class="emt-user">
+                                  <span class="u-thumb"><img src="assets/img/bg/uu.png" alt="img"></span>
+                                  <span class="align-self-center">{{item.login}}</span>
+                              </div>
+                              <h6><a href="course-details.html">{{item.email}}</a></h6>
+                          </div>
+                          <div class="emt-course-meta">
+                              <div class="row">
+                                  <div class="col-6">
+                                      <div class="price">$74.00</div>
+                                  </div>
+                                  <div class="col-6">
+                                      <div class="rating text-right">
+                                          <i class="fa fa-star"></i> 4.9
+                                          <span>(73)</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="thumb">
+                          <img src="assets/img/bg/users.png" alt="img">
+                      </div>
+                  </div>
+
+
+          </div>
+      </div>
+  </div>
+  <!-- course area end -->
+
+
+  <!-- course area start -->
+  <div class="course-area pd-top-110 pd-bottom-90">
+    <div class="container">
+        <div class="section-title">
+            <div class="row">
+                <div class="col-md-8 align-self-center">
+                    <h2 class="title mt-0">Top Featured Products</h2>
+                </div>
+                <div class="col-md-4 text-md-right mt-3 mt-md-0">
+                    <a class="btn btn-base mt-0" href="course.html">View All</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="single-course-inner style-bottom-thumb">
+                    <div class="details">
+                        <div class="details-inner">
+                            <div class="emt-user">
+                                <span class="u-thumb"><img src="assets/img/author/3.png" alt="img"></span>
+                                <span class="align-self-center">Timothy Willis</span>
+                            </div>
+                            <h6><a href="course-details.html">Praesent eu dolor eu orci vehicula euismod</a></h6>
+                        </div>
+                        <div class="emt-course-meta">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="price">$74.00</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="rating text-right">
+                                        <i class="fa fa-star"></i> 4.9
+                                        <span>(73)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumb">
+                        <img src="assets/img/course/3.png" alt="img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-course-inner style-bottom-thumb">
+                    <div class="details">
+                        <div class="details-inner">
+                            <div class="emt-user">
+                                <span class="u-thumb"><img src="assets/img/author/6.png" alt="img"></span>
+                                <span class="align-self-center">Randy Hart</span>
+                            </div>
+                            <h6><a href="course-details.html">Duis rhoncus dui venenatis consequat porttito</a></h6>
+                        </div>
+                        <div class="emt-course-meta">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="price">$74.00</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="rating text-right">
+                                        <i class="fa fa-star"></i> 4.9
+                                        <span>(73)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumb">
+                        <img src="assets/img/course/6.png" alt="img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-course-inner style-bottom-thumb">
+                    <div class="details">
+                        <div class="details-inner">
+                            <div class="emt-user">
+                                <span class="u-thumb"><img src="assets/img/author/4.png" alt="img"></span>
+                                <span class="align-self-center">Walter Griffin</span>
+                            </div>
+                            <h6><a href="course-details.html">Duis vestibulum elit vel neque pharetra vulputate</a>
+                            </h6>
+                        </div>
+                        <div class="emt-course-meta">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="price">$74.00</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="rating text-right">
+                                        <i class="fa fa-star"></i> 4.9
+                                        <span>(73)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumb">
+                        <img src="assets/img/course/4.png" alt="img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-course-inner style-bottom-thumb">
+                    <div class="details">
+                        <div class="details-inner">
+                            <div class="emt-user">
+                                <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
+                                <span class="align-self-center">Nancy Reyes</span>
+                            </div>
+                            <h6><a href="course-details.html">Fox nymphs grab quick-jived waltz. Brick quiz
+                                    whangs</a></h6>
+                        </div>
+                        <div class="emt-course-meta">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="price">$74.00</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="rating text-right">
+                                        <i class="fa fa-star"></i> 4.9
+                                        <span>(73)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumb">
+                        <img src="assets/img/course/1.png" alt="img">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- course area end -->
+
+
+

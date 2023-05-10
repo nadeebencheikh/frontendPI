@@ -1,0 +1,180 @@
+   <!-- breadcrumb start -->
+   <div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/contact.png')">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <div class="section-title mb-0 text-center">
+                <h2 class="page-title">Contact</h2>
+                <ul class="page-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb end -->
+
+<!-- contact list start -->
+<div class="contact-list pd-top-120 pd-bottom-90">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <div class="contact-list-inner">
+                    <div class="media">
+                        <div class="media-left">
+                            <img src="assets/img/icon/17.png" alt="img">
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h5>Our Phone</h5>
+                            <p>+216 51 568 886
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="contact-list-inner">
+                    <div class="media">
+                        <div class="media-left">
+                            <img src="assets/img/icon/18.png" alt="img">
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h5>Our Email</h5>
+                            <p>wecloud.esprit@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="contact-list-inner">
+                    <div class="media">
+                        <div class="media-left">
+                            <img src="assets/img/icon/16.png" alt="img">
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h5>Our Address</h5>
+                            <p>1,2 rue André Ampère El Ghazala.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- contact list end -->
+
+<!-- counter area start -->
+<div class="counter-area pd-bottom-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4" style="height: 655px;">
+                <div class="section-title mb-0">
+                    <h6 class="sub-title right-line">Start Messaging</h6>
+                    <h3 class="title">Active members</h3>
+
+                    <div className="member-list">
+                        <ul  *ngFor="let chat of privateChats | keyvalue" >
+                            <div *ngIf=" chat.key === tab then content; else content2;"></div>
+                                    <ng-template #content><li (click)="setTab( chat.key )" class="member active" > {{ chat.key }} </li></ng-template>
+                                    <ng-template #content2><li (click)="setTab(chat.key)" class="member false" > {{ chat.key }}</li></ng-template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 mt-5 mt-lg-0">
+
+                <div className="chat-content" style="height: 100%;">
+                    <div *ngIf=" 'chatroom' === tab then content; else content2;"></div>
+
+                    <ng-template #content>
+                        <ul class="chat-messages">
+
+                            <div  *ngFor="let chat of publicChat" >
+                                <div *ngIf=" email !== chat.senderName then content3; else content4;"></div>
+
+                                <ng-template #content3>
+                                    <div class="col-lg-12">
+                                        <li class="message false" >
+                                            <div class="avatar">{{chat.senderName}}</div>
+                                            <div class="message-data">{{ chat.message }}</div>
+                                        </li>
+                                        <div class="message__spacer" style="flex:1;"></div>
+                                    </div>
+                                </ng-template>
+
+                                <ng-template #content4>
+                                    <div class="col-lg-12" style="display:flex;">
+                                        <div class="message__spacer" style="flex:1;"></div>
+                                        <li class="message self" >
+                                            <div class="message-data">{{ chat.message }}</div>
+                                            <div class="avatar self">{{chat.senderName}}</div>
+                                        </li>
+                                    </div>
+                                </ng-template>       
+                            
+                            </div>
+                        </ul>
+                        <form class="contact-form-inner  mt-5 mt-md-0" [formGroup]="sendMessageForm" (ngSubmit)="sendPublicMessage()">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="single-input-inner style-bg-border">
+                                        <input type="text" placeholder="Send Message" formControlName="message">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <button  class="btn btn-base">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </ng-template>
+                    
+                    
+                    <ng-template #content2>
+                        <ul class="chat-messages">
+                            <!-- <li (click)="setTab(chat.key)" class="member false" > {{ chat.key }}</li> -->
+                            <div  *ngFor="let chat of privateChats.get(tab)" >
+                                    <div *ngIf=" tab === chat.senderName then content3; else content4;"></div>
+
+                                    <ng-template #content3>
+                                        <div class="col-lg-12">
+                                            <li class="message false" >
+                                                <div class="avatar">{{chat.senderName}}</div>
+                                                <div class="message-data">{{ chat.message }}</div>
+                                            </li>
+                                            <div class="message__spacer" style="flex:1;"></div>
+                                        </div>
+                                    </ng-template>
+
+                                    <ng-template #content4>
+                                        <div class="col-lg-12" style="display:flex;">
+                                            <div class="message__spacer" style="flex:1;"></div>
+                                            <li class="message self" >
+                                                <div class="message-data">{{ chat.message }}</div>
+                                                <div class="avatar self">{{chat.senderName}}</div>
+                                            </li>
+                                        </div>
+                                    </ng-template>       
+                            </div>
+                        </ul>
+                        <form class="contact-form-inner  mt-5 mt-md-0" [formGroup]="sendMessageForm" (ngSubmit)="sendPrivateMessage()">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="single-input-inner style-bg-border">
+                                        <input type="text" placeholder="Send Message" formControlName="message">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <button class="btn btn-base">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </ng-template>   
+               
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- counter area end -->
+

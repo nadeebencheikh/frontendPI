@@ -1,0 +1,154 @@
+<div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/3.png')">
+  <div class="container">
+      <div class="breadcrumb-inner">
+          <div class="section-title mb-0 text-center">
+              <h2 class="page-title">Courses Single</h2>
+              <ul class="page-list">
+                  <li><a href="index.html">Home</a></li>
+                  <li>Courses Single</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- breadcrumb end -->
+
+<!-- course-single area start -->
+<div class="course-single-area pd-top-120 pd-bottom-90">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8">
+              <div class="course-course-detaila-inner">
+                  <div class="details-inner">
+                      <div class="emt-user">
+
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+                          <div class="carousel-inner" >
+                            <div class="carousel-item active" >
+                              <div class="picsum-img-wrapper">
+                                <img [src]="currentProduct.ProductImages[0].url" alt="img" style="height: 800px;width: 800px"/>
+                              </div>
+                            </div>
+                            <div class="carousel-item" *ngFor="let Image of currentProduct.ProductImages.slice(1)" >
+                              <div class="picsum-img-wrapper">
+                                <img [src]="Image.url" alt="img" style="height: 800px;width: 800px"/>
+                              </div>
+                            </div>
+                          </div>
+                          <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                             data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                             data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </div>
+                          <span class="align-self-center">{{currentProduct.user.name}}</span>
+                      </div>
+                      <h3 class="title"><a href="#">{{currentProduct.title}}</a></h3>
+                  </div>
+                  <div class="course-details-nav-tab text-center">
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                          <li class="nav-item">
+                              <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab"
+                                  aria-controls="tab1" aria-selected="true" style="height: auto;width: auto;">Description</a>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                          <div class="course-details-content">
+                              <p>{{currentProduct.description}}</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="td-sidebar">
+                  <div class="widget widget_feature">
+                      <h4 class="widget-title">Product Features</h4>
+                      <ul>
+                        <li><i class="fa fa-clipboard"></i><span>Reference:</span> {{currentProduct.reference}}</li>
+                          <li><i class="fa fa-clipboard"></i><span>Quantity :</span> {{ currentProduct.quantity}}</li>
+                          <li *ngIf="currentProduct.subcategory"><i class="fa fa-clone"></i><span>Categories:</span> {{currentProduct.subcategory.name}}</li>
+
+                      </ul>
+                      <div class="price-wrap text-center" *ngIf="!editOrder">
+                          <h5>Price:<span>ALWAYS FREE!</span></h5>
+                          <a class="btn btn-base btn-radius" (click)="editOrder = true" >GET</a>
+                      </div>
+                    <div class="price-wrap text-center" *ngIf="editOrder">
+                      <h5>Price:<span>SET QUANTITE</span></h5>
+                      <input name="quantity" type="number" value="1" placeholder="Quantity" [(ngModel)]="commande.quantity" class="form-control">
+                      <a class="btn btn-black btn-radius mt-5" (click)="AddCommande(currentProduct)" >PASS ORDER!</a>
+                    </div>
+                  </div>
+                <div *ngIf="FavoriteProducts">
+                <ng-container *ngFor="let Product of FavoriteProducts">
+                  <ng-container *ngIf="currentProduct.user === Product.user; else similarProduct">
+                    <div class="widget widget_catagory">
+                      <h4 class="widget-title">Similar Product</h4>
+                      <div class="single-course-inner">
+                        <div class="thumb">
+                          <img [src]="Product.ProductImages[0].url" alt="img" style="height: 350px;width: 340px" (click)="ShowProduct(Product)"/>
+                        </div>
+                        <div class="details">
+                          <div class="details-inner">
+                            <div class="emt-user">
+                              <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
+                              <span class="align-self-center">{{Product.user.name}}</span>
+                            </div>
+                            <h6><a href="course-details.html">{{Product.description}}</a></h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <ng-template #similarProduct></ng-template>
+                </ng-container>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="row justify-content-center pd-top-100">
+          <div  *ngIf="FavoriteProducts" style="display: flex" >
+              <div class="single-course-inner" *ngFor="let Product of FavoriteProducts " >
+                  <div class="thumb" >
+                            <img [src]="Product.ProductImages[0].url" alt="img" style="height: 350px;width: 340px" (click)="ShowProduct(Product)"/>
+
+                  </div>
+                  <div class="details">
+                      <div class="details-inner">
+                          <div class="emt-user">
+                              <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
+                              <span class="align-self-center">{{Product.user.name}}</span>
+                          </div>
+                          <h6><a href="course-details.html">{{Product.description}}</a></h6>
+                      </div>
+                      <div class="emt-course-meta">
+                          <div class="row">
+                              <div class="col-6">
+                                  <div class="rating">
+                                      <i class="fa fa-star"></i> 4.3
+                                      <span>(23)</span>
+                                  </div>
+                              </div>
+                              <div class="col-6">
+                                  <div class="price text-right">
+                                      Price: <span>553</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>
+<!-- course-single area end -->

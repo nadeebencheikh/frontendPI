@@ -1,0 +1,67 @@
+
+
+.modal-bottom-right {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+
+}
+
+
+.modal-content {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  background-color: white;
+}
+
+.modal-header {
+  height: min-content;
+  background-color: #20c997;
+  color: white;
+}
+
+.modal-title {
+  font-size: 1.2rem;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border-radius: 0;
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-color: #20c997;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: #20c997;
+  border-color: #20c997;
+  font-size: 1.2rem;
+}
+
+.btn-primary:hover {
+  background-color: #20c997;
+  border-color: #20c997;
+}
+/* Styling for save icon */
+.save-icon {
+  color: #28a745; /* Green color */
+  font-size: 24px; /* Adjust size as needed */
+}
+
+
+
+.css{
+  cursor: pointer;}
+

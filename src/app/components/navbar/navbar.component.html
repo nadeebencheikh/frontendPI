@@ -1,0 +1,168 @@
+<div class="navbar-area">
+  <nav class="navbar navbar-area-3 navbar-area navbar-expand-lg">
+      <div class="container nav-container">
+          <div class="responsive-mobile-menu">
+              <button class="menu toggle-btn d-block d-lg-none" data-target="#edumint_main_menu"
+                  aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="icon-left"></span>
+                  <span class="icon-right"></span>
+              </button>
+          </div>
+          <div class="logo">
+              <a href="index.html"><img src="assets/img/logo-2.png" alt="img"></a>
+          </div>
+          <div class="nav-right-part nav-right-part-mobile">
+              <a class="btn btn-base" href="signup.html">Sign Up</a>
+          </div>
+          <div class="collapse navbar-collapse" id="edumint_main_menu">
+              <ul class="navbar-nav menu-open">
+                  <li class="menu-item-has-children current-menu-item">
+                      <a routerLink="home" routerLinkActive="active">Home</a>
+                  </li>
+                  <li class="menu-item-has-children">
+                      <a href="#">Products</a>
+                      <ul class="sub-menu">
+                          <li><a routerLink="product" routerLinkActive="active">Products</a></li>
+                          <li><a routerLink="productdetail" routerLinkActive="active">Single Product</a></li>
+                        <li><a (click)="myModal.show()" >Add Product</a></li>
+                      </ul>
+                  </li>
+                  <li class="menu-item-has-children">
+                      <a href="#">Pages</a>
+                      <ul class="sub-menu">
+                          <li><a routerLink="event" routerLinkActive="active">Event</a></li>
+                          <li><a routerLink="eventdetail" routerLinkActive="active">Event Details</a></li>
+                          <li><a routerLink="claim" routerLinkActive="active">Claim</a></li>
+                      </ul>
+                  </li>
+                  <li class="menu-item-has-children">
+                      <a href="#">Pots</a>
+                      <ul class="sub-menu">
+                          <li><a routerLink="pot" routerLinkActive="active">MyPots</a></li>
+                          <li><a a routerLink="potgrid" routerLinkActive="active">Pots Grid</a></li>
+
+                      </ul>
+                  </li>
+                  <li><a routerLink="contact" routerLinkActive="active">Contact Us</a></li>
+                  <li><a routerLink="chat" routerLinkActive="active">Chat</a></li>
+              </ul>
+          </div>
+          <div class="nav-right-part nav-right-part-desktop style-black">
+              <div class="emt-phone-wrap">
+                  <div class="emt-phone">
+                      <i class="fa fa-phone"></i>
+                      <div class="phone-number align-self-center">
+
+                          Call Us <br>
+                          <span>51 568 886</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="nav-right-part nav-right-part-desktop style-black">
+            <div class="emt-phone-wrap">
+                <div class="emt-phone">
+
+                    <div class="phone-number align-self-center">
+                      <div class="collapse navbar-collapse" id="edumint_main_menu">
+                        <ul class="navbar-nav menu-open " style="padding-left: 0px;">
+                          <li class="menu-item current-menu-item" *ngIf="loggedin">
+                              <a routerLink="login" routerLinkActive="active">Logout</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-right-part nav-right-part-desktop style-black" *ngIf="loggedin">
+          <div class="emt-phone-wrap">
+              <div class="emt-phone">
+                <i class="fa fa-user css" (click)="profile()"></i>
+                  <div class="phone-number align-self-center">
+                    <div class="collapse navbar-collapse" id="edumint_main_menu">
+                      <ul class="navbar-nav menu-open " style="padding-left: 0px;">
+
+                      </ul>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      </div>
+  </nav>
+</div>
+<div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="ModalaccLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-success" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title c4" id="modal-title" style="color: white">Add a Product</h4>
+        <button type="button" class="close" aria-describedby="modal-title" (click)="myModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm" role="form" (ngSubmit)="addProduct()">
+          <label>Title</label>
+          <label style="color:#20c997"></label>
+          <input class="form-control" placeholder="" type="text" [(ngModel)]="productToAdd.title" name="title" #title="ngModel" required minlength="3" maxlength="20">
+          <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert-danger">
+            <div *ngIf="title.errors?.['required']">Le titre est obligatoire</div>
+            <div *ngIf="title.errors?.['minlength'] || title.errors?.['maxlength']">Le titre doit être  entre 3 et 20 caractere</div></div>
+          <label>Reference</label>
+          <label style="color:#20c997"></label>
+          <input class="form-control" placeholder="" type="text" [(ngModel)]="productToAdd.reference" name="reference" #reference="ngModel" required minlength="3" maxlength="50">
+          <div *ngIf="reference.invalid && (reference.dirty || reference.touched)" class="alert-danger">
+            <div *ngIf="reference.errors?.['required']">La reference est obligatoire</div>
+            <div *ngIf="reference.errors?.['minlength'] || reference.errors?.['maxlength']">La reference doit être  entre 3 et 50 carctere</div></div>
+          <label>Quantity</label>
+          <label style="color:#20c997"></label>
+          <input class="form-control" placeholder="" type="number" [(ngModel)]="productToAdd.quantity" name="quantity" #quantity="ngModel" required min="1">
+          <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="alert-danger">
+            <div *ngIf="quantity.errors?.['required']">La quantite est obligatoire</div>
+            <div *ngIf="quantity.errors?.['min']">La quantite doit être un nombre minimum de 1</div></div>
+          <label>Description</label>
+          <label style="color:#20c997"></label>
+          <input class="form-control" placeholder="" type="text" [(ngModel)]="productToAdd.description" name="description" #description="ngModel" required minlength="20" maxlength="150">
+          <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert-danger">
+            <div *ngIf="description.errors?.['required']">La description est obligatoire</div>
+            <div *ngIf="description.errors?.['minlength'] || description.errors?.['maxlength']">La description doit être  entre 20 et 150</div>
+          </div>
+          <label>Sub Category</label>
+          <label style="color:#20c997"></label>
+          <div style="display: flex">
+            <select [(ngModel)]="currentCategory" (ngModelChange)="updateProduct()" class="form-control" [ngModelOptions]="{standalone: true}">>
+              <option *ngFor="let category of categories" [ngValue]="category">{{ category.name }}</option>
+            </select>
+
+            <select [(ngModel)]="productToAdd.subcategory" (ngModelChange)="updateProduct()" class="form-control" [ngModelOptions]="{standalone: true}" >
+              <option *ngFor="let subcategory of filteredSubCategories" [ngValue]="subcategory" >{{ subcategory.name }}</option>
+            </select>
+          </div>
+          <div class="input-group mb-3 mt-5">
+            <input type="file" accept="image/*" multiple (change)="onFileSelected($event)"
+                   class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+                   aria-describedby="basic-addon2">
+          </div>
+          <button type="submit" class="btn btn-primary mt-4" [disabled]="form.invalid" >
+            <i class="ni ni-badge iconmargin"></i> Add
+          </button>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <!--modal.close('Ok click')-->
+        <button type="button" class="btn btn-light" (click)="myModal.hide()">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.modal-dialog -->
+
+</div>

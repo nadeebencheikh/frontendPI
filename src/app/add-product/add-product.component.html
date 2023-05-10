@@ -1,0 +1,89 @@
+<div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/3.png')">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <div class="section-title mb-0 text-center">
+        <h2 class="page-title">Blog</h2>
+        <ul class="page-list">
+          <li><a href="index.html">Home</a></li>
+          <li>Blog</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- breadcrumb end -->
+<div class="container">
+  <div class="row mt-5 mb-5">
+    <div class="col-lg-8">
+      <div class="col-lg-8 mt-5 mt-lg-0 mb-5">
+        <form #form="ngForm" class="contact-form-inner  " (ngSubmit)="addProduct()">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="single-input-inner style-bg-border">
+                <input type="text" name="title" placeholder="Title" [(ngModel)]="productToAdd.title" required minlength="3" maxlength="50" #title="ngModel">
+              </div>
+            </div>
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert-danger">
+              <div *ngIf="title.errors?.['required']">Le titre est obligatoire</div>
+              <div *ngIf="title.errors?.['minLength'] || title.errors?.['maxLength']">Le titre doit être  entre 1 et 50 caractere</div></div>
+            <div class="col-lg-6">
+              <div class="single-input-inner style-bg-border">
+                <input name="reference" type="text" placeholder="Reference" [(ngModel)]="productToAdd.reference" #reference="ngModel" required minlength="3" maxlength="50">
+              </div>
+            </div>
+              <div *ngIf="reference.invalid && (reference.dirty || reference.touched)" class="alert-danger">
+                <div *ngIf="reference.errors?.['required']">La reference est obligatoire</div>
+                <div *ngIf="reference.errors?.['minLength'] || reference.errors?.['maxLength']">La reference doit être  entre 1 et 50 carctere</div></div>
+            <div class="col-6">
+              <div class="single-input-inner style-bg-border">
+                <input name="quantity" type="number" placeholder="Quantity" [(ngModel)]="productToAdd.quantity" min="1" max="50" required #quantity="ngModel">
+              </div>
+            </div>
+                <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="alert-danger">
+                  <div *ngIf="quantity.errors?.['required']">La quantite est obligatoire</div>
+                  <div *ngIf="quantity.errors?.['minLength'] || quantity.errors?.['maxLength']">La quantite doit être un nombre entre 1 et 50</div></div>
+            <div class="col-6">
+              <div class="single-input-inner style-bg-border ">
+                <textarea name="Description" type="text" placeholder="Description"
+                          [(ngModel)]="productToAdd.description" required minlength="20" maxlength="150" #description="ngModel"
+                          style=" min-width:10px; max-width:100%;min-height:10px;height:100%;width:100%;">
+                </textarea>
+              </div>
+            </div>
+                  <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert-danger">
+                    <div *ngIf="description.errors?.['required']">La description est obligatoire</div>
+                    <div *ngIf="description.errors?.['minLength'] || description.errors?.['maxLength']">La description doit être  entre 20 et 150</div>
+                  </div>
+            <div class="col-6">
+              <div class=" style-bg-border">
+                <select [(ngModel)]="currentCategory" (change)="updateProduct()" class="form-select" name="currentCategory">
+                  <option *ngFor="let category of categories" [ngValue]="category">{{ category.name }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6" *ngIf="currentCategory">
+              <div class=" style-bg-border">
+                <select [(ngModel)]="productToAdd.subcategory" (ngModelChange)="updateProduct()" class="form-select" name="subcategory">
+                  <option *ngFor="let subcategory of filteredSubCategories"
+                          [ngValue]="subcategory">{{ subcategory.name }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6 mt-3">
+              <div class="input-group ">
+                <div class="input-group ">
+                  <input type="file" accept="image/*" multiple (change)="onFileSelected($event)"
+                         class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+                         aria-describedby="basic-addon2">
+                </div>
+              </div>
+              <div class="col-12 mt-3">
+                <button class="btn btn-base" type="submit">Add Product</button>
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+</div>
