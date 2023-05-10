@@ -7,22 +7,29 @@ import {Comment} from '../../Models/comment'
 })
 export class CommentService {
 
+  jwt="";
   token = new HttpHeaders()
-  .set('Content-Type', 'application/json; charset=utf-8')
-  .set('Accept', 'application/json')
-  .set('Authorization','Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlzcyI6InNwcmluZyBiYWNrZW5kIiwiaWQiOjEsImV4cCI6MTY4MzUzNzc5MSwiaWF0IjoxNjgzNTA4OTkxfQ.gF4kYfan2A1hTk3RTUfBMlzo3q3iEMw927je4MLqAZCSl9Lko-1s8Fh0GcEA5PQhywAlCCL5rdS5BDoJXXRLEA')
-   
+.set('Content-Type', 'application/json; charset=utf-8')
+.set('Accept', 'application/json')
+.set('authorization','Bearer '+this.jwt)
+
     private baseURL = "http://localhost:8085/comment";
-  
+
     constructor(private httpClient: HttpClient) { }
-  
-    
-   
-    createComment(comment:Comment, id:number): Observable<Object>{
-      return this.httpClient.post(`${this.baseURL}/add-comment/${id}`,comment, {headers:this.token});
+    auth(token2:string){
+      this.jwt='Bearer '+token2;
+      console.log(this.jwt);
+
     }
 
-    addSubComment(text: string, parentId: number): Observable<Comment> {
+
+    createComment(comment:Comment, id:number,iduser:number): Observable<Object>{
+      return this.httpClient.post(`${this.baseURL}/add-comment/${id}/${iduser}`,comment, {
+        headers:new HttpHeaders({ authorization : this.jwt})
+      });
+    }
+
+    addSubComment(text: string, parentId: number,iduser:number): Observable<Comment> {
       const newComment: Comment = {
         text: text,
         date: new Date(),
@@ -30,21 +37,29 @@ export class CommentService {
         replies: [],
         showReplies: false
       };
-      const apiUrlWithParentId = `${this.baseURL}/add-reply/${parentId}`;
-      return this.httpClient.post<Comment>(apiUrlWithParentId, newComment);
+      const apiUrlWithParentId = `${this.baseURL}/add-reply/${parentId}/${iduser}`;
+      return this.httpClient.post<Comment>(apiUrlWithParentId, newComment,{
+        headers:new HttpHeaders({ authorization : this.jwt})
+      });
     }
 
-    
-  
+
+
     getCommentsByPost(id: number): Observable<Comment[]>{
-      return this.httpClient.get<Comment[]>(`${this.baseURL}/retrieve-comments-by-post/${id}`, {headers:this.token});
+      return this.httpClient.get<Comment[]>(`${this.baseURL}/retrieve-comments-by-post/${id}`, {
+        headers:new HttpHeaders({ authorization : this.jwt})
+      });
     }
-  
+
     updateComment(comment:Comment, id:number): Observable<Object>{
-      return this.httpClient.put(`${this.baseURL}/update-comment/${id}`, comment, {headers:this.token});
+      return this.httpClient.put(`${this.baseURL}/update-comment/${id}`, comment, {
+        headers:new HttpHeaders({ authorization : this.jwt})
+      });
     }
-  
+
     deleteComment(id: number): Observable<Object>{
-      return this.httpClient.delete(`${this.baseURL}/remove-comment/${id}`, {headers:this.token});
+      return this.httpClient.delete(`${this.baseURL}/remove-comment/${id}`, {
+        headers:new HttpHeaders({ authorization : this.jwt})
+      });
     }
 }

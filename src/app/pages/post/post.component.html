@@ -17,16 +17,16 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="section-title mb-0">
-                    
+
                     <h2 class="title">Create your Post</h2>
-                   
+
                 </div>
             </div>
             <div class="col-lg-8 mt-5 mt-lg-0" *ngIf="!update">
                 <form class="contact-form-inner  mt-5 mt-md-0"  (ngSubmit) = "onSubmit()">
                     <div class="row">
-                        
-                        
+
+
                         <div class="col-12">
                             <div class="single-input-inner style-bg-border">
                                 <textarea placeholder="write your post here"  [(ngModel)] = "post.description" name = "description"></textarea>
@@ -37,8 +37,8 @@
                             <label> Image</label>
                             <input type="file" class ="form-control" id = "imageHotel"
                                 [(ngModel)] = "hotel.imageHotel" name = "imageHotel" required>
-                                
-                
+
+
                         </div>
                     -->
                         <div class="col-12">
@@ -53,8 +53,8 @@
             <div class="col-lg-8 mt-5 mt-lg-0" *ngIf="update">
                 <form class="contact-form-inner  mt-5 mt-md-0"  (ngSubmit) = "onSubmitt()">
                     <div class="row">
-                        
-                        
+
+
                         <div class="col-12">
                             <div class="single-input-inner style-bg-border">
                                 <textarea   [(ngModel)] = "postu.description" name = "description"></textarea>
@@ -65,8 +65,8 @@
                             <label> Image</label>
                             <input type="file" class ="form-control" id = "imageHotel"
                                 [(ngModel)] = "hotel.imageHotel" name = "imageHotel" required>
-                                
-                
+
+
                         </div>
                     -->
                         <div class="col-12">
@@ -86,9 +86,9 @@
 <div class="blog-area pd-top-50 pd-bottom-120">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8">   
+        <div class="col-lg-8">
             <div class="single-blog-inner style-border" *ngFor = "let post of posts">
-              
+
                 <div class="details">
                     <!-- author -->
                     <div class="d-flex justify-content-between">
@@ -124,9 +124,9 @@
                               align-items-center
                               fs-7
                             "
-                            href="#"
+
                             (click)="updatePostt(post)"
-                            
+
                           >
                             Edit Post</a
                           >
@@ -140,7 +140,7 @@
                               align-items-center
                               fs-7
                             "
-                            href="#"
+
                             (click)="deletePost(post.idPost!)"
                           >
                             Delete Post</a
@@ -156,9 +156,9 @@
                             {{ post.description }}
                         </p>
                 </div>
-                    
+
                       <div class="thumb">
-                        <img 
+                        <img
                         [src]="getImageSrc(post.image)"
                         alt=""
                         class="img-fluid rounded"
@@ -172,7 +172,7 @@
                           <i class="fa fa-comment" aria-hidden="true" ></i> Comment
                         </button>
                     <!---(click)="toggleLike(post)""-->
-                    
+
                       <button  *ngIf="typo=='LIKE'" class="like-button" (click)="toggleReactions(post)" >
                         <i class="fa fa-thumbs-up" aria-hidden="true" ></i>  {{typo}}
                       </button>
@@ -187,7 +187,7 @@
                       </button>
 
                       <button *ngIf="typo==null" class="like-button" (click)="toggleReactions(post)" >
-                       
+
                          React
                       </button>
 
@@ -204,51 +204,51 @@
                         <div class="reaction-button haha" (click)="addReaction(post, 'HAHA')">
                           <i class="fa fa-smile-o" aria-hidden="true"></i>
                         </div>
-                        
+
                       </div>
-                   
-                        
-                        
-                          
+
+
+
+
                       </div>
-    
-                      
-                      
+
+
+
                     </div>
-                    
+
                      <!-- likes & comments -->
-    
-                      
-                     
-                     
-    
-    
-    
+
+
+
+
+
+
+
                       <div *ngFor="let comment of post.comments" >
                         <div *ngIf="comment.parent == null" class="details" >
                           <ul  class="blog-meta">
-                           
+
                             <img src="https://source.unsplash.com/collection/happy-people" alt="User Avatar" class="rounded-circle me-2"
                             style="width: 38px; height: 38px; object-fit: cover"/>
-                            
-                              
-                                
+
+
+
                                 <li><p class="comment-username">John</p></li>
-                                <li> <span class="text-muted fs-7">{{ comment.date | date: 'MMM d, yyyy h:mm a'  }}</span></li> 
+                                <li> <span class="text-muted fs-7">{{ comment.date | date: 'MMM d, yyyy h:mm a'  }}</span></li>
                                 <div class="ml-auto d-flex justify-content-end">
                                     <button type="button" class="reply-btn"  (click)="deleteComment(comment.idComment!)">
-                                        <i class="fa fa-trash"></i> 
+                                        <i class="fa fa-trash"></i>
                                     </button>
                                     <button  type="button" class="reply-btn"  (click)=" updatecomment(comment,post)">
-                                        <i class="fa fa-pencil-square-o"></i> 
+                                        <i class="fa fa-pencil-square-o"></i>
                                     </button>
                                 </div>
-                                
-                                
+
+
                           </ul>
-    
-                        
-                      
+
+
+
                         <p *ngIf="!updatec || commentu.idComment!==comment.idComment " class="m-0 fs-7 bg-gray p-2 rounded">{{ comment.text }}  </p>
 
                         <div class="comment-form-container"  *ngIf="updatec && commentu.idComment==comment.idComment" [hidden]="booli!==post.idPost">
@@ -267,7 +267,7 @@
                           <button type="button" class="reply-btn" (click)="toggleReplies(comment,post.idPost)" >
                             <i class="fa fa-comments"></i> Replies</button>
                         </div>
-                        
+
                         <div *ngIf="comment.showReplies">
                         <div  *ngFor="let commentt of comments"  >
                         <div *ngIf="commentt.parent && commentt.parent.idComment === comment.idComment" class="row align-items-center" >
@@ -282,8 +282,8 @@
                         <div class="col">
                           <p  class="m-1 fs-7 bg-gray p-2 rounded">{{ commentt.text }}</p>
                         </div>
-                          
-                         
+
+
                         </div>
                       </div>
                     </div>
@@ -295,13 +295,13 @@
                               <button type="submit">reply</button>
                             </form>
                           </div>
-                        
-                        </div>                    
-    
+
+                        </div>
+
                       </div>
-    
-                      
-                      
+
+
+
                       <div class="comment-form-container" [hidden]="!p || idc!==post.idPost">
                         <form class="comment-form" (submit)="addComment(post)">
                           <img src="https://source.unsplash.com/collection/happy-people" alt="User Avatar" class="rounded-circle me-2"
@@ -311,18 +311,17 @@
                         </form>
                       </div>
                     </div>
-                    
-                
+
+
               </div>
-           
-          
+
+
         </div>
       </div>
-      
+
     </div>
     </div>
-    
 
 
 
-    
+
