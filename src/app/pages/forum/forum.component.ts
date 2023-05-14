@@ -113,7 +113,7 @@ export class ForumComponent {
         parentComment.replies?.push(subComment);
       });
     }
-    window.location.reload();
+    //window.location.reload();
     this.toggleReplyForm(parentComment);
   }
 
